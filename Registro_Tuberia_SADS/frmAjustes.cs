@@ -116,7 +116,7 @@ namespace Registro_Tuberia_SADS
             catch (Exception err)
             {
                 MessageBox.Show("Error cargar proyecto: " + err.Message +
-                        "\n CHEQUE CONEXION CON LA BASE DE DATOS.");
+                        "\n CHEQUE CONEXION CON LA BASE DE DATOS SADS.");
             }
 
         }
