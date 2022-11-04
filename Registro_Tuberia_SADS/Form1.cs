@@ -18,7 +18,7 @@ namespace Registro_Tuberia_SADS
         //Variable para las solicitudes o consultas a al servidor 
         private static readonly HttpClient cliente = new HttpClient();
         public int var_temporal;
-        public string p_fecha_guardar, path_archivo_txt;
+        public string p_fecha_guardar, path_archivo_txt,p_formato_hora, p_hora_registro;
         public bool p_tubo_repetido=false;
         public char[] p_permitidas_tubo_placa = { '-', '0','1', '2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
@@ -56,7 +56,7 @@ namespace Registro_Tuberia_SADS
             else
             {
                 fecha_envio = p_fecha_guardar;
-                hora_envio = lblHora.Text.Replace(".","");
+                hora_envio = p_hora_registro.Replace(".","");
             }
             
             hora_db_dt = Convert.ToDateTime(fecha_envio+" "+ hora_envio);
@@ -109,7 +109,7 @@ namespace Registro_Tuberia_SADS
             else
             {
                 fecha_envio_txt = p_fecha_guardar;
-                hora_envio_txt = lblHora.Text.Replace(".", "");
+                hora_envio_txt = p_hora_registro.Replace(".", "");
             }
             string linea_encabezado = "ID_tubo,No_tubo,No_placa,ID_proyecto,Maquina,"+
                                       "Lote_alambre,Lote_fundente,"+
@@ -174,10 +174,12 @@ namespace Registro_Tuberia_SADS
 
         void Iniciar_formulario()
         {
+            p_formato_hora = Properties.Settings.Default.Gformato_hora;
             tmrFechaHora.Enabled = true;
             lblMaquina.Text = Properties.Settings.Default.Gmaquina;
             lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
             string orientacion = Properties.Settings.Default.Gfrmp_orientacion;
+
             Cargar_datos_proyectos();
             btnGuardar.Enabled = false;
             this.Height = 300;
@@ -372,6 +374,7 @@ namespace Registro_Tuberia_SADS
                 Properties.Settings.Default.Gmaquina = lblMaquina.Text;
                 Properties.Settings.Default.Gproyecto = lblIDproyecto.Text+"-"+ lblNombreProyecto.Text;
                 Properties.Settings.Default.Gordentrabajo = lblIDproyecto.Text + "-" + lblOrdentrabajo.Text;
+                Properties.Settings.Default.Gformato_hora = p_formato_hora;
                 Properties.Settings.Default.Save();
                 this.Close();
             }
@@ -509,6 +512,12 @@ namespace Registro_Tuberia_SADS
         private void tmrFechaHora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            p_hora_registro= DateTime.Now.ToString("hh:mm:ss tt");
+            if (p_formato_hora=="24horas")
+            {
+                lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            }
+            
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
@@ -615,6 +624,7 @@ namespace Registro_Tuberia_SADS
                 lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
                 Cargar_datos_proyectos();
                 lblMaquina.Text = Properties.Settings.Default.Gmaquina;
+                p_formato_hora = Properties.Settings.Default.Gformato_hora;
                 Properties.Settings.Default.Gcp = false;
             }
             

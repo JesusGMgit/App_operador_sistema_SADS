@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbFormatoHora = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -68,9 +70,9 @@
             this.cmbProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProyecto.FormattingEnabled = true;
-            this.cmbProyecto.Location = new System.Drawing.Point(151, 19);
+            this.cmbProyecto.Location = new System.Drawing.Point(155, 19);
             this.cmbProyecto.Name = "cmbProyecto";
-            this.cmbProyecto.Size = new System.Drawing.Size(287, 33);
+            this.cmbProyecto.Size = new System.Drawing.Size(228, 33);
             this.cmbProyecto.TabIndex = 2;
             this.cmbProyecto.SelectedIndexChanged += new System.EventHandler(this.cmbProyecto_SelectedIndexChanged);
             // 
@@ -87,7 +89,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(377, 247);
+            this.btnAplicar.Location = new System.Drawing.Point(322, 295);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(121, 37);
             this.btnAplicar.TabIndex = 4;
@@ -99,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 24);
+            this.label3.Location = new System.Drawing.Point(15, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 31);
             this.label3.TabIndex = 5;
@@ -108,7 +110,7 @@
             // btnCerrar2
             // 
             this.btnCerrar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.cross;
-            this.btnCerrar2.Location = new System.Drawing.Point(428, 12);
+            this.btnCerrar2.Location = new System.Drawing.Point(373, 12);
             this.btnCerrar2.Name = "btnCerrar2";
             this.btnCerrar2.Size = new System.Drawing.Size(70, 43);
             this.btnCerrar2.TabIndex = 6;
@@ -120,7 +122,7 @@
             this.cmbOrientacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrientacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOrientacion.FormattingEnabled = true;
-            this.cmbOrientacion.Location = new System.Drawing.Point(155, 13);
+            this.cmbOrientacion.Location = new System.Drawing.Point(188, 13);
             this.cmbOrientacion.Name = "cmbOrientacion";
             this.cmbOrientacion.Size = new System.Drawing.Size(228, 33);
             this.cmbOrientacion.TabIndex = 8;
@@ -139,12 +141,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbFormatoHora);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cmbOrientacion);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(411, 59);
+            this.groupBox1.Size = new System.Drawing.Size(431, 99);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PANTALLA";
@@ -156,12 +160,32 @@
             this.groupBox2.Controls.Add(this.cmbMaquina);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 133);
+            this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(457, 108);
+            this.groupBox2.Size = new System.Drawing.Size(431, 108);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DATOS DE TUBERIA";
+            // 
+            // cmbFormatoHora
+            // 
+            this.cmbFormatoHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormatoHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFormatoHora.FormattingEnabled = true;
+            this.cmbFormatoHora.Location = new System.Drawing.Point(188, 52);
+            this.cmbFormatoHora.Name = "cmbFormatoHora";
+            this.cmbFormatoHora.Size = new System.Drawing.Size(228, 33);
+            this.cmbFormatoHora.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(176, 25);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Formato de hora:";
             // 
             // frmAjustes
             // 
@@ -169,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(510, 289);
+            this.ClientSize = new System.Drawing.Size(454, 344);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCerrar2);
@@ -202,5 +226,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmbFormatoHora;
+        private System.Windows.Forms.Label label5;
     }
 }

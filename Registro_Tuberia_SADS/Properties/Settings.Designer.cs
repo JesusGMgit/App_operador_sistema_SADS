@@ -82,5 +82,17 @@ namespace Registro_Tuberia_SADS.Properties {
                 this["Gordentrabajo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Gformato_hora {
+            get {
+                return ((string)(this["Gformato_hora"]));
+            }
+            set {
+                this["Gformato_hora"] = value;
+            }
+        }
     }
 }

@@ -48,6 +48,7 @@ namespace Registro_Tuberia_SADS
                 Properties.Settings.Default.Gmaquina = cmbMaquina.Text;
                 Properties.Settings.Default.Gproyecto = cmbProyecto.Text;
                 Properties.Settings.Default.Gfrmp_orientacion = cmbOrientacion.Text;
+                Properties.Settings.Default.Gformato_hora = cmbFormatoHora.Text;
                 MessageBox.Show("Ajustes guardados.");
                 cmbProyecto.Enabled = false;
                 cmbMaquina.Enabled = false;
@@ -91,9 +92,14 @@ namespace Registro_Tuberia_SADS
             cmbOrientacion.Items.Add("HORIZONTAL");
             cmbOrientacion.Items.Add("VERTICAL");
             cmbOrientacion.Text = "HORIZONTAL";
+            //opciones de formato para hora de hh:mm:ss tt ó hh:mm:ss
+            cmbFormatoHora.Items.Add("12horas");
+            cmbFormatoHora.Items.Add("24horas");
+            cmbFormatoHora.Text = "a.m./p.m.";
             //carga la opcion selecionada anteriormente
             cmbMaquina.Text = Properties.Settings.Default.Gmaquina;
             cmbOrientacion.Text = Properties.Settings.Default.Gfrmp_orientacion;
+            cmbFormatoHora.Text = Properties.Settings.Default.Gformato_hora;
             try
             {
                 
