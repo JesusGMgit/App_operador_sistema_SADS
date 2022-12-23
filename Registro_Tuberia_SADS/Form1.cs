@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Registro_Tuberia_SADS
 {
@@ -23,6 +24,9 @@ namespace Registro_Tuberia_SADS
         public char[] p_permitidas_tubo_placa = { '-', '0','1', '2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
+
+        
+        #region funciones para API REST con la db del SADS
         //funcion parar mandar las consultas a la API echa en php en el servidor o host
         public string GetApiData(string url)
         {
@@ -95,7 +99,27 @@ namespace Registro_Tuberia_SADS
             
         }
 
+        //funcion para saber si hay datos del tubo a registrados
+        //si no hay se hace registro nuevo
+        //si hay se envia a la tabla estra
+        void registro_tuberia(string urlb, string urlm, string urle, string id_tubo)
+        {
+            //revisar si ya existe fue registrado el tubo
 
+            string tubo_datos = GetApiData(urlb + id_tubo);
+            if (tubo_datos != "[] ")
+            {
+                insertApiData_tubo(urle, id_tubo);
+            }
+            else
+            {
+                insertApiData_tubo(urlm, id_tubo);
+            }
+
+        }
+
+        //Respaldo que realiza antes de enviar los datos a la API
+        //Si la conexion falla el respaldo guarda los datos del tubo
         public void archivo_txt_respaldo()
         {
             string fecha_envio_txt,hora_envio_txt;
@@ -150,21 +174,33 @@ namespace Registro_Tuberia_SADS
             }
         }
 
-        void registro_tuberia(string urlb,string urlm, string urle, string id_tubo)
+
+        #endregion
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void tbcPrincipal_MouseMove(object sender, MouseEventArgs e)
         {
-            //revisar si ya existe fue registrado el tubo
-
-            string tubo_datos = GetApiData(urlb + id_tubo);
-            if (tubo_datos != "[] ")
-            {
-                insertApiData_tubo(urle, id_tubo);
-            }
-            else
-            {
-                insertApiData_tubo(urlm, id_tubo);
-            }
-
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void tbpOperador_MouseMove(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void tbpTuberia_MouseMove(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
         void Desabilitar_tuberia()
         {
 
@@ -460,11 +496,7 @@ namespace Registro_Tuberia_SADS
 
         private void txbNoPlaca_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!p_permitidas_tubo_placa.Contains(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-
+            //agregar pra solo letras y numeros
 
         }
 
@@ -634,6 +666,8 @@ namespace Registro_Tuberia_SADS
         {
             Properties.Settings.Default.Gmaquina = lblMaquina.Text;
         }
+
+        #region funciones no usadas y que si borro no sirve formulario
         private void frmPrincipal_Validated(object sender, EventArgs e)
         {
             
@@ -698,6 +732,7 @@ namespace Registro_Tuberia_SADS
         {
 
         }
+        #endregion
 
         private void btnDatosTuberia_Click(object sender, EventArgs e)
         {
@@ -711,6 +746,8 @@ namespace Registro_Tuberia_SADS
                             "Maquina: "+lblMaquina.Text+"\n"+
                             "WPS: "+lblWps.Text);
         }
+
+
 
         private void btnMinimizar2_Click(object sender, EventArgs e)
         {
