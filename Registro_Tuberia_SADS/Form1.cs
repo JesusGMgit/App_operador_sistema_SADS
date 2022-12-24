@@ -106,7 +106,7 @@ namespace Registro_Tuberia_SADS
         {
             //revisar si ya existe fue registrado el tubo
 
-            string tubo_datos = GetApiData(urlb + id_tubo);
+            /*string tubo_datos = GetApiData(urlb + id_tubo);
             if (tubo_datos != "[] ")
             {
                 insertApiData_tubo(urle, id_tubo);
@@ -114,8 +114,8 @@ namespace Registro_Tuberia_SADS
             else
             {
                 insertApiData_tubo(urlm, id_tubo);
-            }
-
+            }*/
+            insertApiData_tubo(urlm, id_tubo);
         }
 
         //Respaldo que realiza antes de enviar los datos a la API
