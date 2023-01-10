@@ -25,7 +25,11 @@ namespace Registro_Tuberia_SADS
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
 
-        
+        public frmPrincipal()
+        {
+            InitializeComponent();
+        }
+
         #region funciones para API REST con la db del SADS
         //funcion parar mandar las consultas a la API echa en php en el servidor o host
         public string GetApiData(string url)
@@ -106,7 +110,7 @@ namespace Registro_Tuberia_SADS
         {
             //revisar si ya existe fue registrado el tubo
 
-            /*string tubo_datos = GetApiData(urlb + id_tubo);
+            string tubo_datos = GetApiData(urlb + id_tubo);
             if (tubo_datos != "[] ")
             {
                 insertApiData_tubo(urle, id_tubo);
@@ -114,7 +118,7 @@ namespace Registro_Tuberia_SADS
             else
             {
                 insertApiData_tubo(urlm, id_tubo);
-            }*/
+            }
             insertApiData_tubo(urlm, id_tubo);
         }
 
@@ -177,6 +181,7 @@ namespace Registro_Tuberia_SADS
 
         #endregion
 
+        #region funcinalidades de formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -201,51 +206,6 @@ namespace Registro_Tuberia_SADS
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        void Desabilitar_tuberia()
-        {
-
-            gpbDatossoldadura.Enabled = false;
-
-        }
-
-        void Iniciar_formulario()
-        {
-            p_formato_hora = Properties.Settings.Default.Gformato_hora;
-            tmrFechaHora.Enabled = true;
-            lblMaquina.Text = Properties.Settings.Default.Gmaquina;
-            lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
-            string orientacion = Properties.Settings.Default.Gfrmp_orientacion;
-
-            Cargar_datos_proyectos();
-            btnGuardar.Enabled = false;
-            this.Height = 300;
-            tbcPrincipal.Height = 295;
-            tbcPrincipal.Location = new Point(6, 5);
-            Desabilitar_tuberia();
-            btnActivarEdicion.Visible = false;
-            btnActivarEdicion.Enabled = false;
-            btnDatosTuberia.Visible = false;
-            txbFecha.Enabled = false;
-            txbFecha.Visible = false;
-            txbHora.Enabled = false;
-            txbHora.Visible = false;
-            txbFolio.Enabled = true;
-            txbFolio.Text = "";
-            btnIngresar.Enabled = true;
-            btnAjustes.Enabled = true;
-            lblNombre.Text = "XXXXXXXXXXXXXXX";
-            lblClaveSold.Text = "XXXXXXXXXXX";
-            lblMensajeerror.Text = "Ingrese Folio";
-            if (orientacion == "VERTICAL")
-            {
-                Orientacion_vertical();
-            }else
-            {
-                Orientacion_horizontal();
-            }
-            txbFolio.Select();
-        }
-
         void Orientacion_vertical()
         {
             //pestañas 
@@ -266,7 +226,7 @@ namespace Registro_Tuberia_SADS
             lblIDp.Location = new Point(9, 390);
             lblIDproyecto.Location = new Point(169, 390);
             Font fuente = new Font(lblTituloOperador.Font.FontFamily, 24);
-            lblTituloOperador.Font=fuente;
+            lblTituloOperador.Font = fuente;
             //pestaña tuberia
             btnCerrar.Location = new Point(475, 6);
             btnMinimizar.Location = new Point(405, 6);
@@ -286,12 +246,12 @@ namespace Registro_Tuberia_SADS
             lblWps.Location = new Point(85, 278);
             gpbDatossoldadura.Location = new Point(6, 305);
             gpbDatossoldadura.Width = 540;
-            gpbDatossoldadura.Height =280;
+            gpbDatossoldadura.Height = 280;
             txbObservaciones.Width = 235;
-            txbObservaciones.Location = new Point(156,200);
+            txbObservaciones.Location = new Point(156, 200);
             lblEobservaciones.Location = new Point(7, 197);
             lblEobservaciones.Text = "Obs. :";
-            btnGuardar.Location = new Point(390,120);
+            btnGuardar.Location = new Point(390, 120);
             btnGuardar.Height = 75;
             btnGuardar.Width = 138;
             btnGuardar.ImageAlign = ContentAlignment.TopCenter;
@@ -350,16 +310,63 @@ namespace Registro_Tuberia_SADS
             btnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
         }
+
+        #endregion
+
+        #region funciones para iniciar formulario y pestañas
+        void Desabilitar_tuberia()
+        {
+
+            gpbDatossoldadura.Enabled = false;
+
+        }
+
+        void Iniciar_formulario()
+        {
+            p_formato_hora = Properties.Settings.Default.Gformato_hora;
+            tmrFechaHora.Enabled = true;
+            lblMaquina.Text = Properties.Settings.Default.Gmaquina;
+            lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
+            string orientacion = Properties.Settings.Default.Gfrmp_orientacion;
+
+            Cargar_datos_proyectos();
+            btnGuardar.Enabled = false;
+            this.Height = 300;
+            tbcPrincipal.Height = 295;
+            tbcPrincipal.Location = new Point(6, 5);
+            Desabilitar_tuberia();
+            btnActivarEdicion.Visible = false;
+            btnActivarEdicion.Enabled = false;
+            btnDatosTuberia.Visible = false;
+            txbFecha.Enabled = false;
+            txbFecha.Visible = false;
+            txbHora.Enabled = false;
+            txbHora.Visible = false;
+            txbFolio.Enabled = true;
+            txbFolio.Text = "";
+            btnIngresar.Enabled = true;
+            btnAjustes.Enabled = true;
+            lblNombre.Text = "XXXXXXXXXXXXXXX";
+            lblClaveSold.Text = "XXXXXXXXXXX";
+            lblMensajeerror.Text = "Ingrese Folio";
+            if (orientacion == "VERTICAL")
+            {
+                Orientacion_vertical();
+            }else
+            {
+                Orientacion_horizontal();
+            }
+            txbFolio.Select();
+        }
+
+        
         void Habilitar_tuberia()
         {
             gpbDatossoldadura.Enabled = true;
             btnDatosTuberia.Visible = true;
         }
 
-        public frmPrincipal()
-        {
-            InitializeComponent();
-        }
+        
 
         void Cargar_datos_proyectos()
         {
@@ -416,83 +423,7 @@ namespace Registro_Tuberia_SADS
             }
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            cerrar_botones();
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            var_temporal = 1;
-            if ((txbLoteAlam.Text!="") && (txbLoteFund.Text!="") && (txbNoPlaca.Text != "") && (txbNoTubo.Text != ""))
-            {
-
-                string no_placa_g = txbNoPlaca.Text.Replace("-", "");
-                string no_tubo_g = txbNoTubo.Text.Replace("-", "");
-                string id_tubo = no_placa_g + no_tubo_g, urlb, urlm, urle;
-                //crear archivo de texto
-                archivo_txt_respaldo();
-                
-                string opcion_maquina = lblMaquina.Text;
-
-                switch (opcion_maquina)
-                {
-                    case "INTERNA1":
-                        //revisar si ya existe fue registrado el tubo
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm,urle, id_tubo);
-                        break;
-                    case "INTERNA2":
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
-                        break;
-                    case "INTERNA3":
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
-                        break;
-                    case "EXTERNA1":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
-                        break;
-                    case "EXTERNA2":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
-                        break;
-                    case "EXTERNA3":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                
-                txbNoPlaca.Text = "";
-                txbNoTubo.Text = "";
-            }else
-            {
-                MessageBox.Show("Dejo sin llenar un cuadro de texto");
-            }
-            
-        }
-
-        private void btnCerrar2_Click(object sender, EventArgs e)
-        {
-            cerrar_botones();
-        }
+        #endregion
 
         private void txbNoPlaca_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -553,90 +484,7 @@ namespace Registro_Tuberia_SADS
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            var output = GetApiData("http://10.10.20.15/api/rq_tOperadores.php?id=" + txbFolio.Text);
-
-            //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
-            List<operadores_tabla> results = JsonConvert.DeserializeObject<List<operadores_tabla>>(output);
-            
-            if ((output != "[]") &&(txbFolio.Text!=""))
-            {
-                foreach (var r in results)
-                {
-                    lblNombre.Text = r.Op_Nombre;
-                    lblClaveSold.Text = "sc-" + r.Op_Clave_soldador;
-
-                }
-
-                if (lblNombreProyecto.Text!="")
-                {
-
-                    //Cargar_datos_proyectos();
-
-                    btnIngresar.Enabled = false;
-                    txbFolio.Enabled = false;
-                    btnAjustes.Enabled = false;
-                    btnGuardar.Enabled = true;
-                    Habilitar_tuberia();
-                    lblMensajeerror.Text = "Hablitada pestaña de registro de Tuberia";
-
-                }
-                else
-                {
-                    MessageBox.Show("Proyecto no configurado");
-                    lblMensajeerror.Text = "Pulse el engrane y configure proyecto y maquina,\n despues de nuevo pulse ingresar";
-                }
-         
-                if(Properties.Settings.Default.Gfrmp_orientacion=="VERTICAL")
-                {
-                    this.Height = 600;
-                    tbcPrincipal.Height = 595;
-                    tbcPrincipal.Location = new Point(6, 2);
-                }
-                else
-                {
-                    this.Height = 420;
-                    tbcPrincipal.Height = 415;
-                    tbcPrincipal.Location = new Point(6, 2);
-                }
-                
-                
-            }
-            else
-            {
-                MessageBox.Show("Operador no registrado");
-                lblMensajeerror.Text = "Folio no registrado";
-            }
-
-            if (txbFolio.Text=="554433")
-            {
-                btnActivarEdicion.Enabled = true;
-                btnActivarEdicion.Visible = true;
-
-            }
-            else
-            {
-                btnActivarEdicion.Enabled = false;
-                btnActivarEdicion.Visible = false;
-            }
-        }
-
-        private void btnSalirOperador_Click(object sender, EventArgs e)
-        {
-
-            Iniciar_formulario();
-        }
-
-        private void btnAjustes_Click(object sender, EventArgs e)
-        {
-            //groupBox1.Enabled = false;
-            //btnCerrar2.Enabled = false;
-            //tbcPrincipal.Enabled = false;
-            frmAjustes frm = new frmAjustes();
-            frm.ShowDialog();
-        }
+        
         private void frmPrincipal_Activated(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.Gcp == true)
@@ -666,6 +514,216 @@ namespace Registro_Tuberia_SADS
         {
             Properties.Settings.Default.Gmaquina = lblMaquina.Text;
         }
+
+        //_________________________________________________________________
+        #region funciones de lso botones
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            cerrar_botones();
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            var_temporal = 1;
+            if ((txbLoteAlam.Text != "") && (txbLoteFund.Text != "") && (txbNoPlaca.Text != "") && (txbNoTubo.Text != ""))
+            {
+
+                string no_placa_g = txbNoPlaca.Text.Replace("-", "");
+                string no_tubo_g = txbNoTubo.Text.Replace("-", "");
+                string id_tubo = no_placa_g + no_tubo_g, urlb, urlm, urle;
+                //crear archivo de texto
+                archivo_txt_respaldo();
+
+                string opcion_maquina = lblMaquina.Text;
+
+                switch (opcion_maquina)
+                {
+                    case "INTERNA1":
+                        //revisar si ya existe fue registrado el tubo
+                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php?tubo=";
+                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php";
+                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+                    case "INTERNA2":
+                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php?tubo=";
+                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php";
+                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+                    case "INTERNA3":
+                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php?tubo=";
+                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php";
+                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+                    case "EXTERNA1":
+                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php?tubo=";
+                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php";
+                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+                    case "EXTERNA2":
+                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php?tubo=";
+                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php";
+                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+                    case "EXTERNA3":
+                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php?tubo=";
+                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php";
+                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
+                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+                txbNoPlaca.Text = "";
+                txbNoTubo.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Dejo sin llenar un cuadro de texto");
+            }
+
+        }
+
+        private void btnCerrar2_Click(object sender, EventArgs e)
+        {
+            cerrar_botones();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            var output = GetApiData("http://10.10.20.15/api/rq_tOperadores.php?id=" + txbFolio.Text);
+
+            //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
+            List<operadores_tabla> results = JsonConvert.DeserializeObject<List<operadores_tabla>>(output);
+
+            if ((output != "[]") && (txbFolio.Text != ""))
+            {
+                foreach (var r in results)
+                {
+                    lblNombre.Text = r.Op_Nombre;
+                    lblClaveSold.Text = "sc-" + r.Op_Clave_soldador;
+
+                }
+
+                if (lblNombreProyecto.Text != "")
+                {
+
+                    //Cargar_datos_proyectos();
+
+                    btnIngresar.Enabled = false;
+                    txbFolio.Enabled = false;
+                    btnAjustes.Enabled = false;
+                    btnGuardar.Enabled = true;
+                    Habilitar_tuberia();
+                    lblMensajeerror.Text = "Hablitada pestaña de registro de Tuberia";
+
+                }
+                else
+                {
+                    MessageBox.Show("Proyecto no configurado");
+                    lblMensajeerror.Text = "Pulse el engrane y configure proyecto y maquina,\n despues de nuevo pulse ingresar";
+                }
+
+                if (Properties.Settings.Default.Gfrmp_orientacion == "VERTICAL")
+                {
+                    this.Height = 600;
+                    tbcPrincipal.Height = 595;
+                    tbcPrincipal.Location = new Point(6, 2);
+                }
+                else
+                {
+                    this.Height = 420;
+                    tbcPrincipal.Height = 415;
+                    tbcPrincipal.Location = new Point(6, 2);
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Operador no registrado");
+                lblMensajeerror.Text = "Folio no registrado";
+            }
+
+            if (txbFolio.Text == "554433")
+            {
+                btnActivarEdicion.Enabled = true;
+                btnActivarEdicion.Visible = true;
+
+            }
+            else
+            {
+                btnActivarEdicion.Enabled = false;
+                btnActivarEdicion.Visible = false;
+            }
+        }
+        private void btnSalirOperador_Click(object sender, EventArgs e)
+        {
+
+            Iniciar_formulario();
+        }
+
+        private void btnAjustes_Click(object sender, EventArgs e)
+        {
+            //groupBox1.Enabled = false;
+            //btnCerrar2.Enabled = false;
+            //tbcPrincipal.Enabled = false;
+            frmAjustes frm = new frmAjustes();
+            frm.ShowDialog();
+        }
+        private void btnDatosTuberia_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Proyecto: " + lblNombreProyecto.Text + "\n" +
+                            "Orden de trabajo: " + lblOrdentrabajo.Text + "\n" +
+                            "Especificacion: " + lblEspecificacion.Text + ".\n" +
+                            "Espesor: " + lblEspesor.Text + "\n" +
+                            "Diametro: " + lblDiametro.Text + "\n" +
+                            "Tipo de alambre: " + lblTipoalambre.Text + "\n" +
+                            "Tipo de fundente: " + lblTipoFundente.Text + "\n" +
+                            "Maquina: " + lblMaquina.Text + "\n" +
+                            "WPS: " + lblWps.Text);
+        }
+
+
+        private void btnMinimizar2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnActivarEdicion_Click(object sender, EventArgs e)
+        {
+            if ((txbFecha.Enabled == false) && (txbHora.Enabled == false))
+            {
+                txbFecha.Enabled = true;
+                txbFecha.Visible = true;
+                txbHora.Enabled = true;
+                txbHora.Visible = true;
+                lblFecha.Visible = false;
+                lblHora.Visible = false;
+            }
+            else
+            {
+                txbFecha.Enabled = false;
+                txbFecha.Visible = false;
+                txbHora.Enabled = false;
+                txbHora.Visible = false;
+                lblFecha.Visible = true;
+                lblHora.Visible = true;
+            }
+
+        }
+        #endregion
 
         #region funciones no usadas y que si borro no sirve formulario
         private void frmPrincipal_Validated(object sender, EventArgs e)
@@ -734,52 +792,9 @@ namespace Registro_Tuberia_SADS
         }
         #endregion
 
-        private void btnDatosTuberia_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Proyecto: "+lblNombreProyecto.Text+"\n"+
-                            "Orden de trabajo: "+lblOrdentrabajo.Text+"\n"+
-                            "Especificacion: "+lblEspecificacion.Text+".\n"+
-                            "Espesor: "+lblEspesor.Text+"\n"+
-                            "Diametro: "+lblDiametro.Text+"\n"+
-                            "Tipo de alambre: "+lblTipoalambre.Text+"\n"+
-                            "Tipo de fundente: "+lblTipoFundente.Text+"\n"+
-                            "Maquina: "+lblMaquina.Text+"\n"+
-                            "WPS: "+lblWps.Text);
-        }
+       
 
 
 
-        private void btnMinimizar2_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnActivarEdicion_Click(object sender, EventArgs e)
-        {
-            if ((txbFecha.Enabled==false) && (txbHora.Enabled==false))
-            {
-                txbFecha.Enabled = true;
-                txbFecha.Visible = true;
-                txbHora.Enabled = true;
-                txbHora.Visible = true;
-                lblFecha.Visible = false;
-                lblHora.Visible = false;
-            }
-            else
-            {
-                txbFecha.Enabled = false;
-                txbFecha.Visible = false;
-                txbHora.Enabled = false;
-                txbHora.Visible = false;
-                lblFecha.Visible = true;
-                lblHora.Visible = true;
-            }
-            
-        }
     }
 }

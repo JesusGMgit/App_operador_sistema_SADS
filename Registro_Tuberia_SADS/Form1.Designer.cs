@@ -32,26 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.tbcPrincipal = new System.Windows.Forms.TabControl();
             this.tbpOperador = new System.Windows.Forms.TabPage();
-            this.btnMinimizar2 = new System.Windows.Forms.Button();
-            this.btnActivarEdicion = new System.Windows.Forms.Button();
             this.lblIDp = new System.Windows.Forms.Label();
             this.lblIDproyecto = new System.Windows.Forms.Label();
             this.lblMensajeerror = new System.Windows.Forms.Label();
-            this.btnAjustes = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblClaveSold = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gpbIngresar = new System.Windows.Forms.GroupBox();
             this.txbFolio = new System.Windows.Forms.TextBox();
-            this.btnSalirOperador = new System.Windows.Forms.Button();
             this.lblFolio = new System.Windows.Forms.Label();
-            this.btnIngresar = new System.Windows.Forms.Button();
             this.lblTituloOperador = new System.Windows.Forms.Label();
-            this.btnCerrar2 = new System.Windows.Forms.Button();
             this.tbpTuberia = new System.Windows.Forms.TabPage();
-            this.btnMinimizar = new System.Windows.Forms.Button();
             this.lblDiametro = new System.Windows.Forms.Label();
             this.lblEdiametro = new System.Windows.Forms.Label();
             this.lblMaquina = new System.Windows.Forms.Label();
@@ -79,7 +71,6 @@
             this.txbLoteAlam = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txbLoteFund = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -87,16 +78,25 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTituloTuberia = new System.Windows.Forms.Label();
             this.lblEspecificacion = new System.Windows.Forms.Label();
+            this.tmrFechaHora = new System.Windows.Forms.Timer(this.components);
+            this.btnMinimizar2 = new System.Windows.Forms.Button();
+            this.btnActivarEdicion = new System.Windows.Forms.Button();
+            this.btnAjustes = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnSalirOperador = new System.Windows.Forms.Button();
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnCerrar2 = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnDatosTuberia = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.tmrFechaHora = new System.Windows.Forms.Timer(this.components);
             this.tbcPrincipal.SuspendLayout();
             this.tbpOperador.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gpbIngresar.SuspendLayout();
             this.tbpTuberia.SuspendLayout();
             this.gpbDatossoldadura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,27 +143,6 @@
             this.tbpOperador.Enter += new System.EventHandler(this.tbpOperador_Enter);
             this.tbpOperador.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbpOperador_MouseMove);
             // 
-            // btnMinimizar2
-            // 
-            this.btnMinimizar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
-            this.btnMinimizar2.Location = new System.Drawing.Point(512, 6);
-            this.btnMinimizar2.Name = "btnMinimizar2";
-            this.btnMinimizar2.Size = new System.Drawing.Size(70, 43);
-            this.btnMinimizar2.TabIndex = 101;
-            this.btnMinimizar2.UseVisualStyleBackColor = true;
-            this.btnMinimizar2.Click += new System.EventHandler(this.btnMinimizar2_Click);
-            // 
-            // btnActivarEdicion
-            // 
-            this.btnActivarEdicion.Image = global::Registro_Tuberia_SADS.Properties.Resources.key;
-            this.btnActivarEdicion.Location = new System.Drawing.Point(534, 105);
-            this.btnActivarEdicion.Name = "btnActivarEdicion";
-            this.btnActivarEdicion.Size = new System.Drawing.Size(58, 53);
-            this.btnActivarEdicion.TabIndex = 17;
-            this.btnActivarEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActivarEdicion.UseVisualStyleBackColor = true;
-            this.btnActivarEdicion.Click += new System.EventHandler(this.btnActivarEdicion_Click);
-            // 
             // lblIDp
             // 
             this.lblIDp.AutoSize = true;
@@ -193,17 +172,6 @@
             this.lblMensajeerror.Size = new System.Drawing.Size(140, 31);
             this.lblMensajeerror.TabIndex = 14;
             this.lblMensajeerror.Text = "mensaje...";
-            // 
-            // btnAjustes
-            // 
-            this.btnAjustes.Image = ((System.Drawing.Image)(resources.GetObject("btnAjustes.Image")));
-            this.btnAjustes.Location = new System.Drawing.Point(470, 105);
-            this.btnAjustes.Name = "btnAjustes";
-            this.btnAjustes.Size = new System.Drawing.Size(58, 53);
-            this.btnAjustes.TabIndex = 13;
-            this.btnAjustes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAjustes.UseVisualStyleBackColor = true;
-            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
             // 
             // label8
             // 
@@ -245,17 +213,6 @@
             this.lblNombre.TabIndex = 10;
             this.lblNombre.Text = "XXXXXXXXXXX";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 53);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // gpbIngresar
             // 
             this.gpbIngresar.Controls.Add(this.txbFolio);
@@ -277,19 +234,6 @@
             this.txbFolio.TextChanged += new System.EventHandler(this.txbFolio_TextChanged);
             this.txbFolio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFolio_KeyPress);
             // 
-            // btnSalirOperador
-            // 
-            this.btnSalirOperador.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_out;
-            this.btnSalirOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirOperador.Location = new System.Drawing.Point(470, 21);
-            this.btnSalirOperador.Name = "btnSalirOperador";
-            this.btnSalirOperador.Size = new System.Drawing.Size(100, 54);
-            this.btnSalirOperador.TabIndex = 8;
-            this.btnSalirOperador.Text = "Salir";
-            this.btnSalirOperador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalirOperador.UseVisualStyleBackColor = true;
-            this.btnSalirOperador.Click += new System.EventHandler(this.btnSalirOperador_Click);
-            // 
             // lblFolio
             // 
             this.lblFolio.AutoSize = true;
@@ -301,19 +245,6 @@
             this.lblFolio.Text = "Folio:";
             this.lblFolio.Click += new System.EventHandler(this.label4_Click);
             // 
-            // btnIngresar
-            // 
-            this.btnIngresar.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_in;
-            this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIngresar.Location = new System.Drawing.Point(311, 21);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(132, 54);
-            this.btnIngresar.TabIndex = 7;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // lblTituloOperador
             // 
             this.lblTituloOperador.AutoSize = true;
@@ -323,16 +254,6 @@
             this.lblTituloOperador.Size = new System.Drawing.Size(336, 39);
             this.lblTituloOperador.TabIndex = 2;
             this.lblTituloOperador.Text = "Datos del Operador";
-            // 
-            // btnCerrar2
-            // 
-            this.btnCerrar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.cancel;
-            this.btnCerrar2.Location = new System.Drawing.Point(588, 6);
-            this.btnCerrar2.Name = "btnCerrar2";
-            this.btnCerrar2.Size = new System.Drawing.Size(70, 43);
-            this.btnCerrar2.TabIndex = 100;
-            this.btnCerrar2.UseVisualStyleBackColor = true;
-            this.btnCerrar2.Click += new System.EventHandler(this.btnCerrar2_Click);
             // 
             // tbpTuberia
             // 
@@ -373,16 +294,6 @@
             this.tbpTuberia.Text = "TUBERIA";
             this.tbpTuberia.Click += new System.EventHandler(this.tbpTuberia_Click);
             this.tbpTuberia.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbpTuberia_MouseMove);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
-            this.btnMinimizar.Location = new System.Drawing.Point(512, 6);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(70, 43);
-            this.btnMinimizar.TabIndex = 102;
-            this.btnMinimizar.UseVisualStyleBackColor = true;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // lblDiametro
             // 
@@ -668,20 +579,6 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Lote Alam:";
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardar.Image = global::Registro_Tuberia_SADS.Properties.Resources.disk;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(398, 142);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(158, 39);
-            this.btnGuardar.TabIndex = 107;
-            this.btnGuardar.Text = " GUARDAR";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // txbLoteFund
             // 
             this.txbLoteFund.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -752,9 +649,117 @@
             this.lblEspecificacion.TabIndex = 25;
             this.lblEspecificacion.Text = "xxxxxxxx";
             // 
+            // tmrFechaHora
+            // 
+            this.tmrFechaHora.Tick += new System.EventHandler(this.tmrFechaHora_Tick);
+            // 
+            // btnMinimizar2
+            // 
+            this.btnMinimizar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
+            this.btnMinimizar2.Location = new System.Drawing.Point(512, 6);
+            this.btnMinimizar2.Name = "btnMinimizar2";
+            this.btnMinimizar2.Size = new System.Drawing.Size(70, 43);
+            this.btnMinimizar2.TabIndex = 101;
+            this.btnMinimizar2.UseVisualStyleBackColor = true;
+            this.btnMinimizar2.Click += new System.EventHandler(this.btnMinimizar2_Click);
+            // 
+            // btnActivarEdicion
+            // 
+            this.btnActivarEdicion.Image = global::Registro_Tuberia_SADS.Properties.Resources.key;
+            this.btnActivarEdicion.Location = new System.Drawing.Point(534, 105);
+            this.btnActivarEdicion.Name = "btnActivarEdicion";
+            this.btnActivarEdicion.Size = new System.Drawing.Size(58, 53);
+            this.btnActivarEdicion.TabIndex = 17;
+            this.btnActivarEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActivarEdicion.UseVisualStyleBackColor = true;
+            this.btnActivarEdicion.Click += new System.EventHandler(this.btnActivarEdicion_Click);
+            // 
+            // btnAjustes
+            // 
+            this.btnAjustes.Image = ((System.Drawing.Image)(resources.GetObject("btnAjustes.Image")));
+            this.btnAjustes.Location = new System.Drawing.Point(470, 105);
+            this.btnAjustes.Name = "btnAjustes";
+            this.btnAjustes.Size = new System.Drawing.Size(58, 53);
+            this.btnAjustes.TabIndex = 13;
+            this.btnAjustes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAjustes.UseVisualStyleBackColor = true;
+            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(6, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 53);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnSalirOperador
+            // 
+            this.btnSalirOperador.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_out;
+            this.btnSalirOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalirOperador.Location = new System.Drawing.Point(470, 21);
+            this.btnSalirOperador.Name = "btnSalirOperador";
+            this.btnSalirOperador.Size = new System.Drawing.Size(100, 54);
+            this.btnSalirOperador.TabIndex = 8;
+            this.btnSalirOperador.Text = "Salir";
+            this.btnSalirOperador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalirOperador.UseVisualStyleBackColor = true;
+            this.btnSalirOperador.Click += new System.EventHandler(this.btnSalirOperador_Click);
+            // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_in;
+            this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIngresar.Location = new System.Drawing.Point(311, 21);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(132, 54);
+            this.btnIngresar.TabIndex = 7;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnCerrar2
+            // 
+            this.btnCerrar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.cancel;
+            this.btnCerrar2.Location = new System.Drawing.Point(588, 6);
+            this.btnCerrar2.Name = "btnCerrar2";
+            this.btnCerrar2.Size = new System.Drawing.Size(70, 43);
+            this.btnCerrar2.TabIndex = 100;
+            this.btnCerrar2.UseVisualStyleBackColor = true;
+            this.btnCerrar2.Click += new System.EventHandler(this.btnCerrar2_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
+            this.btnMinimizar.Location = new System.Drawing.Point(512, 6);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(70, 43);
+            this.btnMinimizar.TabIndex = 102;
+            this.btnMinimizar.UseVisualStyleBackColor = true;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Image = global::Registro_Tuberia_SADS.Properties.Resources.disk;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(398, 142);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(158, 39);
+            this.btnGuardar.TabIndex = 107;
+            this.btnGuardar.Text = " GUARDAR";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // btnDatosTuberia
             // 
-            this.btnDatosTuberia.Image = global::Registro_Tuberia_SADS.Properties.Resources.report_add;
+            this.btnDatosTuberia.BackgroundImage = global::Registro_Tuberia_SADS.Properties.Resources.rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920_1_;
+            this.btnDatosTuberia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDatosTuberia.Location = new System.Drawing.Point(622, 175);
             this.btnDatosTuberia.Name = "btnDatosTuberia";
             this.btnDatosTuberia.Size = new System.Drawing.Size(44, 39);
@@ -784,10 +789,6 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // tmrFechaHora
-            // 
-            this.tmrFechaHora.Tick += new System.EventHandler(this.tmrFechaHora_Tick);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,13 +810,13 @@
             this.tbcPrincipal.ResumeLayout(false);
             this.tbpOperador.ResumeLayout(false);
             this.tbpOperador.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gpbIngresar.ResumeLayout(false);
             this.gpbIngresar.PerformLayout();
             this.tbpTuberia.ResumeLayout(false);
             this.tbpTuberia.PerformLayout();
             this.gpbDatossoldadura.ResumeLayout(false);
             this.gpbDatossoldadura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

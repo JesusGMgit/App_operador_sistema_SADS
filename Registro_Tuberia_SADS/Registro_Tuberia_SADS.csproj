@@ -183,6 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bartkowalski-1960-Matchbox-Cars-Pipe-Truck.ico" />
+    <None Include="Resources\rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920%282%29.png" />
+    <None Include="Resources\rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920%281%29.png" />
     <None Include="Resources\no-entry.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\cancel2.png" />

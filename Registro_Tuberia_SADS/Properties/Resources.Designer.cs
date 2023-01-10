@@ -183,6 +183,26 @@ namespace Registro_Tuberia_SADS.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920_1_ {
+            get {
+                object obj = ResourceManager.GetObject("rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920_2_ {
+            get {
+                object obj = ResourceManager.GetObject("rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920(2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap remove {
             get {
                 object obj = ResourceManager.GetObject("remove", resourceCulture);
