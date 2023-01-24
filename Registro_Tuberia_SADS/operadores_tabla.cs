@@ -8,7 +8,8 @@ namespace Registro_Tuberia_SADS
 {
     class operadores_tabla
     {
-      
+
+        public int Op_ID { get; set; }
         public int Op_Folio { get; set; }
       
         public string Op_Nombre { get; set; }

@@ -11,6 +11,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace Registro_Tuberia_SADS
 {
@@ -32,7 +34,7 @@ namespace Registro_Tuberia_SADS
 
         #region funciones para API REST con la db del SADS
         //funcion parar mandar las consultas a la API echa en php en el servidor o host
-        public string GetApiData(string url)
+       /* public string GetApiData(string url)
         {
             string responseString = "";
             try
@@ -47,7 +49,7 @@ namespace Registro_Tuberia_SADS
 
             }
             return responseString;
-        }
+        }*/
 
         public void insertApiData_tubo(string url,string id_tubo)
         {
@@ -71,7 +73,6 @@ namespace Registro_Tuberia_SADS
             hora_db = hora_db_dt.ToString("yyyy-MM-dd HH:mm:ss");
             try
             {
-                
                 var values = new Dictionary<string, string>
                 {
                     { "T_id_tubo", id_tubo },
@@ -90,9 +91,31 @@ namespace Registro_Tuberia_SADS
 
                 };
 
-                var content = new FormUrlEncodedContent(values);
-                var response = cliente.PostAsync(url, content);
-                
+                //var content = new FormUrlEncodedContent(values);
+                //var response = cliente.PostAsync(url, content);
+
+                var cultureInfo = new CultureInfo("de-DE");
+                var datos_de_envio = new Tabla_exin
+                {
+                    T_ID_tubo = id_tubo,
+                    T_No_tubo = txbNoTubo.Text,
+                    T_No_placa = txbNoPlaca.Text,
+                    T_ID_proyecto = lblIDproyecto.Text,
+                    T_Lote_fundente = txbLoteFund.Text,
+                    T_Lote_alambre = txbLoteAlam.Text,
+                    T_Maquina = lblMaquina.Text,
+                    T_FolioOperador = txbFolio.Text,
+                    T_Fecha = fecha_envio,
+                    T_Hora = hora_envio,
+                    T_Hora_db = DateTime.ParseExact(hora_db, "yyyy-MM-dd HH:mm:ss", cultureInfo),
+                    T_Archivos_excel = "",
+                    T_Observaciones = txbObservaciones.Text
+                };
+
+
+                var json = JObject.FromObject(datos_de_envio);
+                var content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+                var response = Consultas.Post_API(url, content);
 
             }
             catch (Exception err)
@@ -110,8 +133,13 @@ namespace Registro_Tuberia_SADS
         {
             //revisar si ya existe fue registrado el tubo
 
-            string tubo_datos = GetApiData(urlb + id_tubo);
-            if (tubo_datos != "[] ")
+            string tubo_datos;
+            //insertApiData_tubo(urlm, id_tubo);
+
+            tubo_datos = Consultas.Get_API(urlb + id_tubo);
+            lblIDproyecto.Text = tubo_datos;
+         
+            if ((tubo_datos != "[] "))
             {
                 insertApiData_tubo(urle, id_tubo);
             }
@@ -119,7 +147,7 @@ namespace Registro_Tuberia_SADS
             {
                 insertApiData_tubo(urlm, id_tubo);
             }
-            insertApiData_tubo(urlm, id_tubo);
+            
         }
 
         //Respaldo que realiza antes de enviar los datos a la API
@@ -381,7 +409,7 @@ namespace Registro_Tuberia_SADS
                 //mensaje de error
                 try
                 {
-                    var output_p = GetApiData("http://10.10.20.15/api/rq_tProyectos.php?id=" + lblIDproyecto.Text);
+                    var output_p = Consultas.Get_API("http://10.10.20.15/backend/api/ar_tProyectos.php?Pro_ID=" + lblIDproyecto.Text);
                     List<proyectos_tabla> results_p = JsonConvert.DeserializeObject<List<proyectos_tabla>>(output_p);
                     foreach (var r in results_p)
                     {
@@ -540,37 +568,43 @@ namespace Registro_Tuberia_SADS
                     case "INTERNA1":
                         //revisar si ya existe fue registrado el tubo
                         urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php";
+                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_1.php";
                         urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
                     case "INTERNA2":
                         urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php";
+                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_2.php";
                         urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
                     case "INTERNA3":
                         urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php?tubo=";
-                        urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php";
+                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_3.php";
                         urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
                     case "EXTERNA1":
                         urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php";
+                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_1.php";
                         urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
                     case "EXTERNA2":
                         urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php";
+                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_2.php";
                         urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
                     case "EXTERNA3":
                         urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php?tubo=";
-                        urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php";
+                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php";
+                        urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_3.php";
                         urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
                         registro_tuberia(urlb, urlm, urle, id_tubo);
                         break;
@@ -582,6 +616,7 @@ namespace Registro_Tuberia_SADS
 
                 txbNoPlaca.Text = "";
                 txbNoTubo.Text = "";
+                txbObservaciones.Text = "";
             }
             else
             {
@@ -597,9 +632,8 @@ namespace Registro_Tuberia_SADS
         private void button1_Click(object sender, EventArgs e)
         {
 
-            var output = GetApiData("http://10.10.20.15/api/rq_tOperadores.php?id=" + txbFolio.Text);
+            var output = Consultas.Get_API("http://10.10.20.15/api/rq_tOperadores.php?id=" + txbFolio.Text);
 
-            //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
             List<operadores_tabla> results = JsonConvert.DeserializeObject<List<operadores_tabla>>(output);
 
             if ((output != "[]") && (txbFolio.Text != ""))
@@ -655,12 +689,16 @@ namespace Registro_Tuberia_SADS
             {
                 btnActivarEdicion.Enabled = true;
                 btnActivarEdicion.Visible = true;
+                btnAPIs.Enabled = true;
+                btnAPIs.Visible = true;
 
             }
             else
             {
                 btnActivarEdicion.Enabled = false;
                 btnActivarEdicion.Visible = false;
+                btnAPIs.Enabled = false;
+                btnAPIs.Visible = false;
             }
         }
         private void btnSalirOperador_Click(object sender, EventArgs e)
@@ -773,6 +811,12 @@ namespace Registro_Tuberia_SADS
         private void tbpOperador_Enter(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnAPIs_Click(object sender, EventArgs e)
+        {
+            frmAPIs frm = new frmAPIs();
+            frm.ShowDialog();
         }
 
         private void tbcPrincipal_Enter(object sender, EventArgs e)

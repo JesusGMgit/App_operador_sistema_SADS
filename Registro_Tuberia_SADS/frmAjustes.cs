@@ -17,7 +17,7 @@ namespace Registro_Tuberia_SADS
     {
         //Variable para las solicitudes o consultas a al servidor 
         private static readonly HttpClient cliente_ajustes = new HttpClient();
-        string P_nombre_proyecto;
+        
         //funcion parar mandar las consultas a la API echa en php en el servidor o host
         public string GetApiData(string url)
         {
@@ -104,7 +104,7 @@ namespace Registro_Tuberia_SADS
             {
                 
 
-                var output = GetApiData("http://10.10.20.15/api/rq_tProyectos.php?id=");
+                var output = GetApiData("http://10.10.20.15/backend/api/ar_tProyectos.php");
 
                 //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
                 List<proyectos_tabla> results = JsonConvert.DeserializeObject<List<proyectos_tabla>>(output);

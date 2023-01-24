@@ -91,6 +91,7 @@
             this.btnDatosTuberia = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnAPIs = new System.Windows.Forms.Button();
             this.tbcPrincipal.SuspendLayout();
             this.tbpOperador.SuspendLayout();
             this.gpbIngresar.SuspendLayout();
@@ -119,6 +120,7 @@
             // tbpOperador
             // 
             this.tbpOperador.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tbpOperador.Controls.Add(this.btnAPIs);
             this.tbpOperador.Controls.Add(this.btnMinimizar2);
             this.tbpOperador.Controls.Add(this.btnActivarEdicion);
             this.tbpOperador.Controls.Add(this.lblIDp);
@@ -789,6 +791,20 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // btnAPIs
+            // 
+            this.btnAPIs.BackgroundImage = global::Registro_Tuberia_SADS.Properties.Resources.business_help_support_service_customer_icon_231900;
+            this.btnAPIs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAPIs.Enabled = false;
+            this.btnAPIs.Location = new System.Drawing.Point(15, 306);
+            this.btnAPIs.Name = "btnAPIs";
+            this.btnAPIs.Size = new System.Drawing.Size(44, 39);
+            this.btnAPIs.TabIndex = 104;
+            this.btnAPIs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAPIs.UseVisualStyleBackColor = true;
+            this.btnAPIs.Visible = false;
+            this.btnAPIs.Click += new System.EventHandler(this.btnAPIs_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -885,6 +901,7 @@
         private System.Windows.Forms.Button btnDatosTuberia;
         private System.Windows.Forms.Button btnMinimizar2;
         private System.Windows.Forms.Button btnMinimizar;
+        private System.Windows.Forms.Button btnAPIs;
     }
 }
 
