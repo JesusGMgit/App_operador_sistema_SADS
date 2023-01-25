@@ -129,25 +129,11 @@ namespace Registro_Tuberia_SADS
         //funcion para saber si hay datos del tubo a registrados
         //si no hay se hace registro nuevo
         //si hay se envia a la tabla estra
-        void registro_tuberia(string urlb, string urlm, string urle, string id_tubo)
+        void registro_tuberia(string urlm, string id_tubo)
         {
-            //revisar si ya existe fue registrado el tubo
-
-            string tubo_datos;
-            //insertApiData_tubo(urlm, id_tubo);
-
-            tubo_datos = Consultas.Get_API(urlb + id_tubo);
-            lblIDproyecto.Text = tubo_datos;
-         
-            if ((tubo_datos != "[] "))
-            {
-                insertApiData_tubo(urle, id_tubo);
-            }
-            else
-            {
-                insertApiData_tubo(urlm, id_tubo);
-            }
             
+            insertApiData_tubo(urlm, id_tubo);
+
         }
 
         //Respaldo que realiza antes de enviar los datos a la API
@@ -557,7 +543,7 @@ namespace Registro_Tuberia_SADS
 
                 string no_placa_g = txbNoPlaca.Text.Replace("-", "");
                 string no_tubo_g = txbNoTubo.Text.Replace("-", "");
-                string id_tubo = no_placa_g + no_tubo_g, urlb, urlm, urle;
+                string id_tubo = no_placa_g + no_tubo_g, urlm;
                 //crear archivo de texto
                 archivo_txt_respaldo();
 
@@ -566,47 +552,28 @@ namespace Registro_Tuberia_SADS
                 switch (opcion_maquina)
                 {
                     case "INTERNA1":
-                        //revisar si ya existe fue registrado el tubo
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_1.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_1.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
                     case "INTERNA2":
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_2.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_2.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
                     case "INTERNA3":
-                        urlb = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_3.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_3.php";
-                        urle = "http://10.10.20.15/api/internas/rq_tTuberiaInterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
                     case "EXTERNA1":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_1.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_1.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
                     case "EXTERNA2":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_2.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_2.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
                     case "EXTERNA3":
-                        urlb = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php?tubo=";
-                        //urlm = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_3.php";
                         urlm = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_3.php";
-                        urle = "http://10.10.20.15/api/externas/rq_tTuberiaExterna_extra.php";
-                        registro_tuberia(urlb, urlm, urle, id_tubo);
+                        registro_tuberia(urlm, id_tubo);
                         break;
 
                     default:
