@@ -32,17 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.tbcPrincipal = new System.Windows.Forms.TabControl();
             this.tbpOperador = new System.Windows.Forms.TabPage();
+            this.btnAPIs = new System.Windows.Forms.Button();
+            this.btnActivarEdicion = new System.Windows.Forms.Button();
             this.lblIDp = new System.Windows.Forms.Label();
             this.lblIDproyecto = new System.Windows.Forms.Label();
             this.lblMensajeerror = new System.Windows.Forms.Label();
+            this.btnAjustes = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblClaveSold = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.gpbIngresar = new System.Windows.Forms.GroupBox();
             this.txbFolio = new System.Windows.Forms.TextBox();
+            this.btnSalirOperador = new System.Windows.Forms.Button();
             this.lblFolio = new System.Windows.Forms.Label();
-            this.lblTituloOperador = new System.Windows.Forms.Label();
+            this.btnIngresar = new System.Windows.Forms.Button();
             this.tbpTuberia = new System.Windows.Forms.TabPage();
             this.lblDiametro = new System.Windows.Forms.Label();
             this.lblEdiametro = new System.Windows.Forms.Label();
@@ -71,33 +75,27 @@
             this.txbLoteAlam = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.txbLoteFund = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblNombreProyecto = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.lblTituloTuberia = new System.Windows.Forms.Label();
             this.lblEspecificacion = new System.Windows.Forms.Label();
-            this.tmrFechaHora = new System.Windows.Forms.Timer(this.components);
-            this.btnMinimizar2 = new System.Windows.Forms.Button();
-            this.btnActivarEdicion = new System.Windows.Forms.Button();
-            this.btnAjustes = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnSalirOperador = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
-            this.btnCerrar2 = new System.Windows.Forms.Button();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnDatosTuberia = new System.Windows.Forms.Button();
+            this.lblTituloTuberia = new System.Windows.Forms.Label();
+            this.tmrFechaHora = new System.Windows.Forms.Timer(this.components);
+            this.PnlTitulo = new System.Windows.Forms.Panel();
+            this.LblVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnAPIs = new System.Windows.Forms.Button();
             this.tbcPrincipal.SuspendLayout();
             this.tbpOperador.SuspendLayout();
             this.gpbIngresar.SuspendLayout();
             this.tbpTuberia.SuspendLayout();
             this.gpbDatossoldadura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.PnlTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +106,11 @@
             this.tbcPrincipal.Controls.Add(this.tbpTuberia);
             this.tbcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.tbcPrincipal.Location = new System.Drawing.Point(0, 42);
             this.tbcPrincipal.Multiline = true;
             this.tbcPrincipal.Name = "tbcPrincipal";
             this.tbcPrincipal.SelectedIndex = 0;
-            this.tbcPrincipal.Size = new System.Drawing.Size(720, 420);
+            this.tbcPrincipal.Size = new System.Drawing.Size(720, 419);
             this.tbcPrincipal.TabIndex = 0;
             this.tbcPrincipal.Enter += new System.EventHandler(this.tbcPrincipal_Enter);
             this.tbcPrincipal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbcPrincipal_MouseMove);
@@ -121,7 +119,6 @@
             // 
             this.tbpOperador.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tbpOperador.Controls.Add(this.btnAPIs);
-            this.tbpOperador.Controls.Add(this.btnMinimizar2);
             this.tbpOperador.Controls.Add(this.btnActivarEdicion);
             this.tbpOperador.Controls.Add(this.lblIDp);
             this.tbpOperador.Controls.Add(this.lblIDproyecto);
@@ -131,25 +128,47 @@
             this.tbpOperador.Controls.Add(this.lblClaveSold);
             this.tbpOperador.Controls.Add(this.label6);
             this.tbpOperador.Controls.Add(this.lblNombre);
-            this.tbpOperador.Controls.Add(this.pictureBox2);
             this.tbpOperador.Controls.Add(this.gpbIngresar);
-            this.tbpOperador.Controls.Add(this.lblTituloOperador);
-            this.tbpOperador.Controls.Add(this.btnCerrar2);
             this.tbpOperador.Location = new System.Drawing.Point(4, 4);
             this.tbpOperador.Name = "tbpOperador";
             this.tbpOperador.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpOperador.Size = new System.Drawing.Size(682, 412);
+            this.tbpOperador.Size = new System.Drawing.Size(682, 411);
             this.tbpOperador.TabIndex = 1;
             this.tbpOperador.Text = "OPERADOR";
             this.tbpOperador.Click += new System.EventHandler(this.tbpOperador_Click);
             this.tbpOperador.Enter += new System.EventHandler(this.tbpOperador_Enter);
             this.tbpOperador.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbpOperador_MouseMove);
             // 
+            // btnAPIs
+            // 
+            this.btnAPIs.BackgroundImage = global::Registro_Tuberia_SADS.Properties.Resources.business_help_support_service_customer_icon_231900;
+            this.btnAPIs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAPIs.Enabled = false;
+            this.btnAPIs.Location = new System.Drawing.Point(15, 244);
+            this.btnAPIs.Name = "btnAPIs";
+            this.btnAPIs.Size = new System.Drawing.Size(44, 39);
+            this.btnAPIs.TabIndex = 104;
+            this.btnAPIs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAPIs.UseVisualStyleBackColor = true;
+            this.btnAPIs.Visible = false;
+            this.btnAPIs.Click += new System.EventHandler(this.btnAPIs_Click);
+            // 
+            // btnActivarEdicion
+            // 
+            this.btnActivarEdicion.Image = global::Registro_Tuberia_SADS.Properties.Resources.key;
+            this.btnActivarEdicion.Location = new System.Drawing.Point(534, 43);
+            this.btnActivarEdicion.Name = "btnActivarEdicion";
+            this.btnActivarEdicion.Size = new System.Drawing.Size(58, 53);
+            this.btnActivarEdicion.TabIndex = 17;
+            this.btnActivarEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActivarEdicion.UseVisualStyleBackColor = true;
+            this.btnActivarEdicion.Click += new System.EventHandler(this.btnActivarEdicion_Click);
+            // 
             // lblIDp
             // 
             this.lblIDp.AutoSize = true;
             this.lblIDp.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDp.Location = new System.Drawing.Point(9, 348);
+            this.lblIDp.Location = new System.Drawing.Point(9, 286);
             this.lblIDp.Name = "lblIDp";
             this.lblIDp.Size = new System.Drawing.Size(162, 31);
             this.lblIDp.TabIndex = 16;
@@ -159,7 +178,7 @@
             // 
             this.lblIDproyecto.AutoSize = true;
             this.lblIDproyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDproyecto.Location = new System.Drawing.Point(169, 348);
+            this.lblIDproyecto.Location = new System.Drawing.Point(169, 286);
             this.lblIDproyecto.Name = "lblIDproyecto";
             this.lblIDproyecto.Size = new System.Drawing.Size(68, 31);
             this.lblIDproyecto.TabIndex = 15;
@@ -169,17 +188,28 @@
             // 
             this.lblMensajeerror.AutoSize = true;
             this.lblMensajeerror.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensajeerror.Location = new System.Drawing.Point(6, 254);
+            this.lblMensajeerror.Location = new System.Drawing.Point(6, 192);
             this.lblMensajeerror.Name = "lblMensajeerror";
             this.lblMensajeerror.Size = new System.Drawing.Size(140, 31);
             this.lblMensajeerror.TabIndex = 14;
             this.lblMensajeerror.Text = "mensaje...";
             // 
+            // btnAjustes
+            // 
+            this.btnAjustes.Image = ((System.Drawing.Image)(resources.GetObject("btnAjustes.Image")));
+            this.btnAjustes.Location = new System.Drawing.Point(470, 43);
+            this.btnAjustes.Name = "btnAjustes";
+            this.btnAjustes.Size = new System.Drawing.Size(58, 53);
+            this.btnAjustes.TabIndex = 13;
+            this.btnAjustes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAjustes.UseVisualStyleBackColor = true;
+            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 74);
+            this.label8.Location = new System.Drawing.Point(6, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 31);
             this.label8.TabIndex = 11;
@@ -189,7 +219,7 @@
             // 
             this.lblClaveSold.AutoSize = true;
             this.lblClaveSold.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaveSold.Location = new System.Drawing.Point(177, 105);
+            this.lblClaveSold.Location = new System.Drawing.Point(177, 43);
             this.lblClaveSold.Name = "lblClaveSold";
             this.lblClaveSold.Size = new System.Drawing.Size(212, 31);
             this.lblClaveSold.TabIndex = 12;
@@ -199,7 +229,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 105);
+            this.label6.Location = new System.Drawing.Point(6, 43);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(165, 31);
             this.label6.TabIndex = 9;
@@ -209,7 +239,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(177, 74);
+            this.lblNombre.Location = new System.Drawing.Point(177, 12);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(212, 31);
             this.lblNombre.TabIndex = 10;
@@ -221,7 +251,7 @@
             this.gpbIngresar.Controls.Add(this.btnSalirOperador);
             this.gpbIngresar.Controls.Add(this.lblFolio);
             this.gpbIngresar.Controls.Add(this.btnIngresar);
-            this.gpbIngresar.Location = new System.Drawing.Point(4, 154);
+            this.gpbIngresar.Location = new System.Drawing.Point(4, 92);
             this.gpbIngresar.Name = "gpbIngresar";
             this.gpbIngresar.Size = new System.Drawing.Size(588, 88);
             this.gpbIngresar.TabIndex = 8;
@@ -236,6 +266,19 @@
             this.txbFolio.TextChanged += new System.EventHandler(this.txbFolio_TextChanged);
             this.txbFolio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFolio_KeyPress);
             // 
+            // btnSalirOperador
+            // 
+            this.btnSalirOperador.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_out;
+            this.btnSalirOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalirOperador.Location = new System.Drawing.Point(470, 21);
+            this.btnSalirOperador.Name = "btnSalirOperador";
+            this.btnSalirOperador.Size = new System.Drawing.Size(100, 54);
+            this.btnSalirOperador.TabIndex = 8;
+            this.btnSalirOperador.Text = "Salir";
+            this.btnSalirOperador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalirOperador.UseVisualStyleBackColor = true;
+            this.btnSalirOperador.Click += new System.EventHandler(this.btnSalirOperador_Click);
+            // 
             // lblFolio
             // 
             this.lblFolio.AutoSize = true;
@@ -247,20 +290,22 @@
             this.lblFolio.Text = "Folio:";
             this.lblFolio.Click += new System.EventHandler(this.label4_Click);
             // 
-            // lblTituloOperador
+            // btnIngresar
             // 
-            this.lblTituloOperador.AutoSize = true;
-            this.lblTituloOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloOperador.Location = new System.Drawing.Point(113, 10);
-            this.lblTituloOperador.Name = "lblTituloOperador";
-            this.lblTituloOperador.Size = new System.Drawing.Size(336, 39);
-            this.lblTituloOperador.TabIndex = 2;
-            this.lblTituloOperador.Text = "Datos del Operador";
+            this.btnIngresar.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_in;
+            this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIngresar.Location = new System.Drawing.Point(311, 21);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(132, 54);
+            this.btnIngresar.TabIndex = 7;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
             // 
             // tbpTuberia
             // 
             this.tbpTuberia.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.tbpTuberia.Controls.Add(this.btnMinimizar);
             this.tbpTuberia.Controls.Add(this.lblDiametro);
             this.tbpTuberia.Controls.Add(this.lblEdiametro);
             this.tbpTuberia.Controls.Add(this.lblMaquina);
@@ -283,15 +328,12 @@
             this.tbpTuberia.Controls.Add(this.label7);
             this.tbpTuberia.Controls.Add(this.lblNombreProyecto);
             this.tbpTuberia.Controls.Add(this.lblFecha);
-            this.tbpTuberia.Controls.Add(this.lblTituloTuberia);
             this.tbpTuberia.Controls.Add(this.lblEspecificacion);
             this.tbpTuberia.Controls.Add(this.btnDatosTuberia);
-            this.tbpTuberia.Controls.Add(this.pictureBox1);
-            this.tbpTuberia.Controls.Add(this.btnCerrar);
             this.tbpTuberia.Location = new System.Drawing.Point(4, 4);
             this.tbpTuberia.Name = "tbpTuberia";
             this.tbpTuberia.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpTuberia.Size = new System.Drawing.Size(682, 412);
+            this.tbpTuberia.Size = new System.Drawing.Size(682, 411);
             this.tbpTuberia.TabIndex = 0;
             this.tbpTuberia.Text = "TUBERIA";
             this.tbpTuberia.Click += new System.EventHandler(this.tbpTuberia_Click);
@@ -300,10 +342,10 @@
             // lblDiametro
             // 
             this.lblDiametro.AutoSize = true;
-            this.lblDiametro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiametro.Location = new System.Drawing.Point(499, 175);
+            this.lblDiametro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiametro.Location = new System.Drawing.Point(500, 127);
             this.lblDiametro.Name = "lblDiametro";
-            this.lblDiametro.Size = new System.Drawing.Size(100, 25);
+            this.lblDiametro.Size = new System.Drawing.Size(90, 24);
             this.lblDiametro.TabIndex = 27;
             this.lblDiametro.Text = "xxxxxxxx";
             // 
@@ -311,7 +353,7 @@
             // 
             this.lblEdiametro.AutoSize = true;
             this.lblEdiametro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEdiametro.Location = new System.Drawing.Point(371, 175);
+            this.lblEdiametro.Location = new System.Drawing.Point(372, 127);
             this.lblEdiametro.Name = "lblEdiametro";
             this.lblEdiametro.Size = new System.Drawing.Size(104, 25);
             this.lblEdiametro.TabIndex = 30;
@@ -320,10 +362,10 @@
             // lblMaquina
             // 
             this.lblMaquina.AutoSize = true;
-            this.lblMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaquina.Location = new System.Drawing.Point(502, 143);
+            this.lblMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaquina.Location = new System.Drawing.Point(503, 98);
             this.lblMaquina.Name = "lblMaquina";
-            this.lblMaquina.Size = new System.Drawing.Size(100, 25);
+            this.lblMaquina.Size = new System.Drawing.Size(90, 24);
             this.lblMaquina.TabIndex = 15;
             this.lblMaquina.Text = "xxxxxxxx";
             // 
@@ -331,7 +373,7 @@
             // 
             this.lblEmaquina.AutoSize = true;
             this.lblEmaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmaquina.Location = new System.Drawing.Point(371, 143);
+            this.lblEmaquina.Location = new System.Drawing.Point(372, 98);
             this.lblEmaquina.Name = "lblEmaquina";
             this.lblEmaquina.Size = new System.Drawing.Size(125, 25);
             this.lblEmaquina.TabIndex = 26;
@@ -341,7 +383,7 @@
             // 
             this.lblEwps.AutoSize = true;
             this.lblEwps.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEwps.Location = new System.Drawing.Point(5, 197);
+            this.lblEwps.Location = new System.Drawing.Point(6, 152);
             this.lblEwps.Name = "lblEwps";
             this.lblEwps.Size = new System.Drawing.Size(73, 29);
             this.lblEwps.TabIndex = 34;
@@ -351,7 +393,7 @@
             // 
             this.lblWps.AutoSize = true;
             this.lblWps.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWps.Location = new System.Drawing.Point(85, 197);
+            this.lblWps.Location = new System.Drawing.Point(86, 152);
             this.lblWps.Name = "lblWps";
             this.lblWps.Size = new System.Drawing.Size(101, 29);
             this.lblWps.TabIndex = 33;
@@ -359,20 +401,22 @@
             // 
             // txbHora
             // 
-            this.txbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbHora.Location = new System.Drawing.Point(472, 47);
+            this.txbHora.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbHora.Location = new System.Drawing.Point(130, 3);
             this.txbHora.Name = "txbHora";
-            this.txbHora.Size = new System.Drawing.Size(127, 31);
+            this.txbHora.Size = new System.Drawing.Size(127, 26);
             this.txbHora.TabIndex = 32;
             this.txbHora.Text = "hh:mm:ss pp";
             this.txbHora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbFecha
             // 
-            this.txbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFecha.Location = new System.Drawing.Point(166, 52);
+            this.txbFecha.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbFecha.Location = new System.Drawing.Point(3, 3);
             this.txbFecha.Name = "txbFecha";
-            this.txbFecha.Size = new System.Drawing.Size(127, 31);
+            this.txbFecha.Size = new System.Drawing.Size(127, 26);
             this.txbFecha.TabIndex = 31;
             this.txbFecha.Text = "yyyy/MM/dd";
             this.txbFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -380,10 +424,10 @@
             // lblEspesor
             // 
             this.lblEspesor.AutoSize = true;
-            this.lblEspesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEspesor.Location = new System.Drawing.Point(105, 172);
+            this.lblEspesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEspesor.Location = new System.Drawing.Point(106, 127);
             this.lblEspesor.Name = "lblEspesor";
-            this.lblEspesor.Size = new System.Drawing.Size(100, 25);
+            this.lblEspesor.Size = new System.Drawing.Size(90, 24);
             this.lblEspesor.TabIndex = 29;
             this.lblEspesor.Text = "xxxxxxxx";
             // 
@@ -391,7 +435,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(5, 172);
+            this.label17.Location = new System.Drawing.Point(6, 127);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 25);
             this.label17.TabIndex = 28;
@@ -399,31 +443,29 @@
             // 
             // lblTipoFundente
             // 
-            this.lblTipoFundente.AutoSize = true;
-            this.lblTipoFundente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoFundente.Location = new System.Drawing.Point(499, 114);
+            this.lblTipoFundente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoFundente.Location = new System.Drawing.Point(500, 69);
             this.lblTipoFundente.Name = "lblTipoFundente";
-            this.lblTipoFundente.Size = new System.Drawing.Size(100, 25);
+            this.lblTipoFundente.Size = new System.Drawing.Size(167, 25);
             this.lblTipoFundente.TabIndex = 24;
             this.lblTipoFundente.Text = "xxxxxxxx";
             // 
             // lblTipoalambre
             // 
-            this.lblTipoalambre.AutoSize = true;
-            this.lblTipoalambre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoalambre.Location = new System.Drawing.Point(499, 85);
+            this.lblTipoalambre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoalambre.Location = new System.Drawing.Point(500, 40);
             this.lblTipoalambre.Name = "lblTipoalambre";
-            this.lblTipoalambre.Size = new System.Drawing.Size(100, 25);
+            this.lblTipoalambre.Size = new System.Drawing.Size(167, 25);
             this.lblTipoalambre.TabIndex = 23;
             this.lblTipoalambre.Text = "xxxxxxxx";
             // 
             // lblOrdentrabajo
             // 
             this.lblOrdentrabajo.AutoSize = true;
-            this.lblOrdentrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrdentrabajo.Location = new System.Drawing.Point(105, 114);
+            this.lblOrdentrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrdentrabajo.Location = new System.Drawing.Point(106, 69);
             this.lblOrdentrabajo.Name = "lblOrdentrabajo";
-            this.lblOrdentrabajo.Size = new System.Drawing.Size(100, 25);
+            this.lblOrdentrabajo.Size = new System.Drawing.Size(90, 24);
             this.lblOrdentrabajo.TabIndex = 22;
             this.lblOrdentrabajo.Text = "xxxxxxxx";
             // 
@@ -431,7 +473,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(5, 143);
+            this.label14.Location = new System.Drawing.Point(6, 98);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(61, 25);
             this.label14.TabIndex = 21;
@@ -441,7 +483,7 @@
             // 
             this.lblEfundente.AutoSize = true;
             this.lblEfundente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEfundente.Location = new System.Drawing.Point(371, 114);
+            this.lblEfundente.Location = new System.Drawing.Point(372, 69);
             this.lblEfundente.Name = "lblEfundente";
             this.lblEfundente.Size = new System.Drawing.Size(134, 25);
             this.lblEfundente.TabIndex = 20;
@@ -451,7 +493,7 @@
             // 
             this.lblEalambre.AutoSize = true;
             this.lblEalambre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEalambre.Location = new System.Drawing.Point(371, 85);
+            this.lblEalambre.Location = new System.Drawing.Point(372, 40);
             this.lblEalambre.Name = "lblEalambre";
             this.lblEalambre.Size = new System.Drawing.Size(122, 25);
             this.lblEalambre.TabIndex = 19;
@@ -461,7 +503,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 114);
+            this.label11.Location = new System.Drawing.Point(6, 69);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 25);
             this.label11.TabIndex = 18;
@@ -470,12 +512,13 @@
             // lblHora
             // 
             this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(440, 49);
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(279, 5);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(103, 29);
+            this.lblHora.Size = new System.Drawing.Size(102, 25);
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "hh:mm tt";
+            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // gpbDatossoldadura
             // 
@@ -490,7 +533,7 @@
             this.gpbDatossoldadura.Controls.Add(this.btnGuardar);
             this.gpbDatossoldadura.Controls.Add(this.txbLoteFund);
             this.gpbDatossoldadura.Controls.Add(this.label9);
-            this.gpbDatossoldadura.Location = new System.Drawing.Point(6, 217);
+            this.gpbDatossoldadura.Location = new System.Drawing.Point(7, 172);
             this.gpbDatossoldadura.Name = "gpbDatossoldadura";
             this.gpbDatossoldadura.Size = new System.Drawing.Size(660, 187);
             this.gpbDatossoldadura.TabIndex = 17;
@@ -581,6 +624,20 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Lote Alam:";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Image = global::Registro_Tuberia_SADS.Properties.Resources.disk;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(398, 142);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(158, 39);
+            this.btnGuardar.TabIndex = 107;
+            this.btnGuardar.Text = " GUARDAR";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // txbLoteFund
             // 
             this.txbLoteFund.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -604,7 +661,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(5, 85);
+            this.label7.Location = new System.Drawing.Point(6, 40);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 25);
             this.label7.TabIndex = 16;
@@ -612,11 +669,10 @@
             // 
             // lblNombreProyecto
             // 
-            this.lblNombreProyecto.AutoSize = true;
-            this.lblNombreProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreProyecto.Location = new System.Drawing.Point(105, 85);
+            this.lblNombreProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProyecto.Location = new System.Drawing.Point(106, 40);
             this.lblNombreProyecto.Name = "lblNombreProyecto";
-            this.lblNombreProyecto.Size = new System.Drawing.Size(100, 25);
+            this.lblNombreProyecto.Size = new System.Drawing.Size(260, 25);
             this.lblNombreProyecto.TabIndex = 10;
             this.lblNombreProyecto.Text = "xxxxxxxx";
             this.lblNombreProyecto.Click += new System.EventHandler(this.lblNombreProyecto_Click);
@@ -624,145 +680,29 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(135, 49);
+            this.lblFecha.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(551, 3);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(139, 29);
+            this.lblFecha.Size = new System.Drawing.Size(128, 25);
             this.lblFecha.TabIndex = 5;
             this.lblFecha.Text = "yyyy/MM/dd";
-            // 
-            // lblTituloTuberia
-            // 
-            this.lblTituloTuberia.AutoSize = true;
-            this.lblTituloTuberia.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTuberia.Location = new System.Drawing.Point(110, 10);
-            this.lblTituloTuberia.Name = "lblTituloTuberia";
-            this.lblTituloTuberia.Size = new System.Drawing.Size(339, 39);
-            this.lblTituloTuberia.TabIndex = 2;
-            this.lblTituloTuberia.Text = "Registro de Tuberia";
             // 
             // lblEspecificacion
             // 
             this.lblEspecificacion.AutoSize = true;
-            this.lblEspecificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEspecificacion.Location = new System.Drawing.Point(105, 143);
+            this.lblEspecificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEspecificacion.Location = new System.Drawing.Point(106, 98);
             this.lblEspecificacion.Name = "lblEspecificacion";
-            this.lblEspecificacion.Size = new System.Drawing.Size(100, 25);
+            this.lblEspecificacion.Size = new System.Drawing.Size(90, 24);
             this.lblEspecificacion.TabIndex = 25;
             this.lblEspecificacion.Text = "xxxxxxxx";
-            // 
-            // tmrFechaHora
-            // 
-            this.tmrFechaHora.Tick += new System.EventHandler(this.tmrFechaHora_Tick);
-            // 
-            // btnMinimizar2
-            // 
-            this.btnMinimizar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
-            this.btnMinimizar2.Location = new System.Drawing.Point(512, 6);
-            this.btnMinimizar2.Name = "btnMinimizar2";
-            this.btnMinimizar2.Size = new System.Drawing.Size(70, 43);
-            this.btnMinimizar2.TabIndex = 101;
-            this.btnMinimizar2.UseVisualStyleBackColor = true;
-            this.btnMinimizar2.Click += new System.EventHandler(this.btnMinimizar2_Click);
-            // 
-            // btnActivarEdicion
-            // 
-            this.btnActivarEdicion.Image = global::Registro_Tuberia_SADS.Properties.Resources.key;
-            this.btnActivarEdicion.Location = new System.Drawing.Point(534, 105);
-            this.btnActivarEdicion.Name = "btnActivarEdicion";
-            this.btnActivarEdicion.Size = new System.Drawing.Size(58, 53);
-            this.btnActivarEdicion.TabIndex = 17;
-            this.btnActivarEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActivarEdicion.UseVisualStyleBackColor = true;
-            this.btnActivarEdicion.Click += new System.EventHandler(this.btnActivarEdicion_Click);
-            // 
-            // btnAjustes
-            // 
-            this.btnAjustes.Image = ((System.Drawing.Image)(resources.GetObject("btnAjustes.Image")));
-            this.btnAjustes.Location = new System.Drawing.Point(470, 105);
-            this.btnAjustes.Name = "btnAjustes";
-            this.btnAjustes.Size = new System.Drawing.Size(58, 53);
-            this.btnAjustes.TabIndex = 13;
-            this.btnAjustes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAjustes.UseVisualStyleBackColor = true;
-            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 53);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnSalirOperador
-            // 
-            this.btnSalirOperador.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_out;
-            this.btnSalirOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirOperador.Location = new System.Drawing.Point(470, 21);
-            this.btnSalirOperador.Name = "btnSalirOperador";
-            this.btnSalirOperador.Size = new System.Drawing.Size(100, 54);
-            this.btnSalirOperador.TabIndex = 8;
-            this.btnSalirOperador.Text = "Salir";
-            this.btnSalirOperador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalirOperador.UseVisualStyleBackColor = true;
-            this.btnSalirOperador.Click += new System.EventHandler(this.btnSalirOperador_Click);
-            // 
-            // btnIngresar
-            // 
-            this.btnIngresar.Image = global::Registro_Tuberia_SADS.Properties.Resources.door_in;
-            this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIngresar.Location = new System.Drawing.Point(311, 21);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(132, 54);
-            this.btnIngresar.TabIndex = 7;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnCerrar2
-            // 
-            this.btnCerrar2.Image = global::Registro_Tuberia_SADS.Properties.Resources.cancel;
-            this.btnCerrar2.Location = new System.Drawing.Point(588, 6);
-            this.btnCerrar2.Name = "btnCerrar2";
-            this.btnCerrar2.Size = new System.Drawing.Size(70, 43);
-            this.btnCerrar2.TabIndex = 100;
-            this.btnCerrar2.UseVisualStyleBackColor = true;
-            this.btnCerrar2.Click += new System.EventHandler(this.btnCerrar2_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Image = global::Registro_Tuberia_SADS.Properties.Resources.no_entry;
-            this.btnMinimizar.Location = new System.Drawing.Point(512, 6);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(70, 43);
-            this.btnMinimizar.TabIndex = 102;
-            this.btnMinimizar.UseVisualStyleBackColor = true;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardar.Image = global::Registro_Tuberia_SADS.Properties.Resources.disk;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(398, 142);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(158, 39);
-            this.btnGuardar.TabIndex = 107;
-            this.btnGuardar.Text = " GUARDAR";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnDatosTuberia
             // 
             this.btnDatosTuberia.BackgroundImage = global::Registro_Tuberia_SADS.Properties.Resources.rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920_1_;
             this.btnDatosTuberia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDatosTuberia.Location = new System.Drawing.Point(622, 175);
+            this.btnDatosTuberia.Location = new System.Drawing.Point(623, 127);
             this.btnDatosTuberia.Name = "btnDatosTuberia";
             this.btnDatosTuberia.Size = new System.Drawing.Size(44, 39);
             this.btnDatosTuberia.TabIndex = 35;
@@ -770,49 +710,90 @@
             this.btnDatosTuberia.UseVisualStyleBackColor = true;
             this.btnDatosTuberia.Click += new System.EventHandler(this.btnDatosTuberia_Click);
             // 
+            // lblTituloTuberia
+            // 
+            this.lblTituloTuberia.AutoSize = true;
+            this.lblTituloTuberia.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTuberia.Location = new System.Drawing.Point(110, 3);
+            this.lblTituloTuberia.Name = "lblTituloTuberia";
+            this.lblTituloTuberia.Size = new System.Drawing.Size(339, 39);
+            this.lblTituloTuberia.TabIndex = 2;
+            this.lblTituloTuberia.Text = "Registro de Tuberia";
+            // 
+            // tmrFechaHora
+            // 
+            this.tmrFechaHora.Tick += new System.EventHandler(this.tmrFechaHora_Tick);
+            // 
+            // PnlTitulo
+            // 
+            this.PnlTitulo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.PnlTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnlTitulo.Controls.Add(this.LblVersion);
+            this.PnlTitulo.Controls.Add(this.pictureBox1);
+            this.PnlTitulo.Controls.Add(this.lblTituloTuberia);
+            this.PnlTitulo.Controls.Add(this.btnMinimizar);
+            this.PnlTitulo.Controls.Add(this.btnCerrar);
+            this.PnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlTitulo.Location = new System.Drawing.Point(0, 0);
+            this.PnlTitulo.Name = "PnlTitulo";
+            this.PnlTitulo.Size = new System.Drawing.Size(720, 42);
+            this.PnlTitulo.TabIndex = 103;
+            this.PnlTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlTitulo_MouseMove);
+            // 
+            // LblVersion
+            // 
+            this.LblVersion.AutoSize = true;
+            this.LblVersion.Location = new System.Drawing.Point(455, 26);
+            this.LblVersion.Name = "LblVersion";
+            this.LblVersion.Size = new System.Drawing.Size(42, 13);
+            this.LblVersion.TabIndex = 103;
+            this.LblVersion.Text = "Version";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(101, 53);
+            this.pictureBox1.Size = new System.Drawing.Size(78, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizar.Image = global::Registro_Tuberia_SADS.Properties.Resources.window_minimize_icon_195498;
+            this.btnMinimizar.Location = new System.Drawing.Point(604, 0);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(57, 40);
+            this.btnMinimizar.TabIndex = 102;
+            this.btnMinimizar.UseVisualStyleBackColor = true;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
             // btnCerrar
             // 
-            this.btnCerrar.Image = global::Registro_Tuberia_SADS.Properties.Resources.cancel;
-            this.btnCerrar.Location = new System.Drawing.Point(588, 6);
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Image = global::Registro_Tuberia_SADS.Properties.Resources.math_times_icon_195340;
+            this.btnCerrar.Location = new System.Drawing.Point(661, 0);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(70, 43);
+            this.btnCerrar.Size = new System.Drawing.Size(57, 40);
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnAPIs
-            // 
-            this.btnAPIs.BackgroundImage = global::Registro_Tuberia_SADS.Properties.Resources.business_help_support_service_customer_icon_231900;
-            this.btnAPIs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAPIs.Enabled = false;
-            this.btnAPIs.Location = new System.Drawing.Point(15, 306);
-            this.btnAPIs.Name = "btnAPIs";
-            this.btnAPIs.Size = new System.Drawing.Size(44, 39);
-            this.btnAPIs.TabIndex = 104;
-            this.btnAPIs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAPIs.UseVisualStyleBackColor = true;
-            this.btnAPIs.Visible = false;
-            this.btnAPIs.Click += new System.EventHandler(this.btnAPIs_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(720, 420);
+            this.ClientSize = new System.Drawing.Size(720, 461);
             this.ControlBox = false;
             this.Controls.Add(this.tbcPrincipal);
+            this.Controls.Add(this.PnlTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrincipal";
@@ -832,7 +813,8 @@
             this.tbpTuberia.PerformLayout();
             this.gpbDatossoldadura.ResumeLayout(false);
             this.gpbDatossoldadura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.PnlTitulo.ResumeLayout(false);
+            this.PnlTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -852,10 +834,8 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.TabPage tbpOperador;
-        private System.Windows.Forms.Button btnCerrar2;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.TextBox txbFolio;
-        private System.Windows.Forms.Label lblTituloOperador;
         private System.Windows.Forms.Timer tmrFechaHora;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.GroupBox gpbIngresar;
@@ -864,7 +844,6 @@
         private System.Windows.Forms.Label lblClaveSold;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnSalirOperador;
         private System.Windows.Forms.Button btnAjustes;
         private System.Windows.Forms.TextBox txbLoteAlam;
@@ -899,9 +878,10 @@
         private System.Windows.Forms.Label lblEwps;
         private System.Windows.Forms.Label lblWps;
         private System.Windows.Forms.Button btnDatosTuberia;
-        private System.Windows.Forms.Button btnMinimizar2;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button btnAPIs;
+        private System.Windows.Forms.Panel PnlTitulo;
+        private System.Windows.Forms.Label LblVersion;
     }
 }
 

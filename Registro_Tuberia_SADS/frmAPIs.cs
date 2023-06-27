@@ -6,11 +6,57 @@ using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Net.Http;
 using System.Text;
+using System.Data;
 
 namespace Registro_Tuberia_SADS
 {
     public partial class frmAPIs : Form
     {
+        DataTable P_Tuberia_datatable = new DataTable();
+        string P_url_fecha = "";
+        void Iniciar_tabla_tuberia()
+        {
+            P_Tuberia_datatable.Columns.Add("T_id_tubo");
+            P_Tuberia_datatable.Columns.Add("T_no_tubo");
+            P_Tuberia_datatable.Columns.Add("T_no_placa");
+            P_Tuberia_datatable.Columns.Add("T_ID_proyecto");
+            P_Tuberia_datatable.Columns.Add("T_lote_alambre");
+            P_Tuberia_datatable.Columns.Add("T_lote_fundente");
+            P_Tuberia_datatable.Columns.Add("T_foliooperador");
+            P_Tuberia_datatable.Columns.Add("T_fecha");
+            P_Tuberia_datatable.Columns.Add("T_hora");
+            P_Tuberia_datatable.Columns.Add("T_hora_db");
+            P_Tuberia_datatable.Columns.Add("archivo_excel");
+            P_Tuberia_datatable.Columns.Add("Observaciones");
+
+        }
+
+        public void Rellenar_tabla_datos(string url)
+        {
+            //llena la tabla de datos para tuberia de los registros solicitados por fecha dada
+            P_Tuberia_datatable.Rows.Clear();
+            try
+            {
+                
+                var output = Consultas.Get_API(url + "?fecha=" + txbFechaaP3.Text);
+
+                List<Tabla_exin> temporal_results = JsonConvert.DeserializeObject<List<Tabla_exin>>(output);
+                foreach (var r in temporal_results)
+                {
+                    P_Tuberia_datatable.Rows.Add(r.T_ID_tubo, r.T_No_tubo, r.T_No_placa, r.T_ID_proyecto, r.T_Lote_alambre,
+                    r.T_Lote_fundente, r.T_FolioOperador, r.T_Fecha, r.T_Hora, r.T_Hora_db, r.T_Archivos_excel, r.T_Observaciones);
+
+                }
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Rellenar tabla:" + err.Message);
+
+            }
+
+        }
+
         public frmAPIs()
         {
             InitializeComponent();
@@ -102,7 +148,7 @@ namespace Registro_Tuberia_SADS
                 T_FolioOperador = Folio,
                 T_Fecha = fecha_envio,
                 T_Hora = hora_envio,
-                T_Hora_db = DateTime.ParseExact(hora_db,"yyyy-MM-dd HH:mm:ss",cultureInfo),
+                T_Hora_db = hora_db,
                 T_Archivos_excel="",
                 T_Observaciones=observaciones
             };
@@ -132,6 +178,105 @@ namespace Registro_Tuberia_SADS
             string tubo_datos = Consultas.Get_API(url_tubo + "?T_ID_tubo=" + txbIDtubo.Text);
             lblDatosTubo.Text = tubo_datos;
 
+        }
+
+        private void frmAPIs_Load(object sender, EventArgs e)
+        {
+            cmbMaquina.Items.Add("EXTERNA1");
+            cmbMaquina.Items.Add("EXTERNA2");
+            cmbMaquina.Items.Add("EXTERNA3");
+            cmbMaquina.Items.Add("INTERNA1");
+            cmbMaquina.Items.Add("INTERNA2");
+            cmbMaquina.Items.Add("INTERNA3");
+            Iniciar_tabla_tuberia();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DgvTablatuberia.DataSource = null;
+            P_Tuberia_datatable.DefaultView.RowFilter = "T_id_tubo NOT IN (.)";
+            P_Tuberia_datatable.Rows.Clear();
+            DgvTablatuberia.DataSource = P_Tuberia_datatable;
+            
+            //P_extra = false;
+            //designar a que tabla de soldadura sera guardado el dato del archivo excel
+                if (cmbMaquina.Text == "INTERNA1")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_1.php";
+                }
+                else if (cmbMaquina.Text == "INTERNA2")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_2.php";
+                }
+                else if (cmbMaquina.Text == "INTERNA3")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaInterna_3.php";
+                }                 
+                else if (cmbMaquina.Text == "EXTERNA1")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_1.php";
+                }
+                else if (cmbMaquina.Text == "EXTERNA2")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_2.php";
+                }
+                else if (cmbMaquina.Text == "EXTERNA3")
+                {
+                    P_url_fecha = "http://10.10.20.15/backend/api/ar_tTuberiaExterna_3.php";
+                }
+
+            Rellenar_tabla_datos(P_url_fecha);
+            DgvTablatuberia.DataSource = P_Tuberia_datatable;
+        }
+
+        private void btnAsignarfechadb_Click(object sender, EventArgs e)
+        {
+            int numero_filas = DgvTablatuberia.Rows.Count;
+
+            string id_tubo, hora_db, fecha_envio, hora_envio;
+            DateTime hora_db_dt;
+            
+            for (int i = 0; i < numero_filas - 1; i++)
+            {
+                id_tubo = DgvTablatuberia.Rows[i].Cells[0].Value.ToString();
+                fecha_envio = DgvTablatuberia.Rows[i].Cells[7].Value.ToString();
+                hora_envio = DgvTablatuberia.Rows[i].Cells[8].Value.ToString();
+                hora_db_dt = Convert.ToDateTime(fecha_envio + " " + hora_envio);
+                hora_db = hora_db_dt.ToString("yyyy-MM-dd HH:mm:ss");
+                Dictionary<string, string> diccionario = new Dictionary<string, string>
+                {
+                    {"T_ID_tubo", id_tubo },
+                    {"T_Hora_db",hora_db }
+
+                };
+                var json = JsonConvert.SerializeObject(diccionario);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                Consultas.Update_API(P_url_fecha,content);
+            }
+            
+        }
+
+        private void btnModificarUno_Click(object sender, EventArgs e)
+        {
+
+            int numero_filas = DgvTablatuberia.Rows.Count;
+            int i = Convert.ToInt16(txbTuboModificar.Text);
+            string id_tubo, hora_db, fecha_envio, hora_envio;
+            DateTime hora_db_dt;
+            id_tubo = DgvTablatuberia.Rows[i].Cells[0].Value.ToString();
+            fecha_envio = DgvTablatuberia.Rows[i].Cells[7].Value.ToString();
+            hora_envio = DgvTablatuberia.Rows[i].Cells[8].Value.ToString();
+            hora_db_dt = Convert.ToDateTime(fecha_envio + " " + hora_envio);
+            hora_db = hora_db_dt.ToString("yyyy-MM-dd HH:mm:ss");
+            Dictionary<string, string> diccionario = new Dictionary<string, string>
+                {
+                    {"T_ID_tubo", id_tubo },
+                    {"T_Hora_db",hora_db }
+
+                };
+            var json = JsonConvert.SerializeObject(diccionario);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            Consultas.Update_API(P_url_fecha, content);
         }
     }
 }

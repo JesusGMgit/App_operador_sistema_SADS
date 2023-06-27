@@ -63,6 +63,46 @@ namespace Registro_Tuberia_SADS.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1904654_cancel_close_cross_delete_reject_remove_stop_122504 {
+            get {
+                object obj = ResourceManager.GetObject("1904654-cancel-close-cross-delete-reject-remove-stop_122504", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1904666_calculate_close_delete_hide_minimize_minus_remove_122516 {
+            get {
+                object obj = ResourceManager.GetObject("1904666-calculate-close-delete-hide-minimize-minus-remove_122516", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1904666_calculate_close_delete_hide_minimize_minus_remove_122516_1_ {
+            get {
+                object obj = ResourceManager.GetObject("1904666-calculate-close-delete-hide-minimize-minus-remove_122516(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _53c0f4b59f0df_db9_to_rj45 {
+            get {
+                object obj = ResourceManager.GetObject("53c0f4b59f0df-db9-to-rj45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap business_help_support_service_customer_icon_231900 {
             get {
                 object obj = ResourceManager.GetObject("business_help_support_service_customer_icon_231900", resourceCulture);
@@ -183,6 +223,16 @@ namespace Registro_Tuberia_SADS.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap math_times_icon_195340 {
+            get {
+                object obj = ResourceManager.GetObject("math_times_icon_195340", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_entry {
             get {
                 object obj = ResourceManager.GetObject("no-entry", resourceCulture);
@@ -226,6 +276,16 @@ namespace Registro_Tuberia_SADS.Properties {
         internal static System.Drawing.Bitmap report_add {
             get {
                 object obj = ResourceManager.GetObject("report_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_minimize_icon_195498 {
+            get {
+                object obj = ResourceManager.GetObject("window_minimize_icon_195498", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

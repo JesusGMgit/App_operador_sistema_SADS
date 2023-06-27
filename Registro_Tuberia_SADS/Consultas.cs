@@ -24,7 +24,6 @@ namespace Registro_Tuberia_SADS
             catch (Exception err)
             {
                 responseString= "error_conexion: " + err.Message;
-                
 
             }
             return responseString;
@@ -37,6 +36,12 @@ namespace Registro_Tuberia_SADS
            return respuesta_post= cliente_consulta.PostAsync(url, contenido).Result.ToString();
         }
 
-        
+        public static string Update_API(string url_update, StringContent contenidp_update)
+        {
+            string respuesta_update;
+
+            respuesta_update = cliente_consulta.PutAsync(url_update, contenidp_update).ToString();
+            return respuesta_update;
+        }
     }
 }

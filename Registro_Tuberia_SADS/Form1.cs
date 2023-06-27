@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
@@ -13,6 +10,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
+using System.Reflection;
 
 namespace Registro_Tuberia_SADS
 {
@@ -20,13 +18,14 @@ namespace Registro_Tuberia_SADS
     {
         //Variable para las solicitudes o consultas a al servidor 
         private static readonly HttpClient cliente = new HttpClient();
+        public static  new string ProductVersion { get; }
         public int var_temporal;
         public string p_fecha_guardar, path_archivo_txt,p_formato_hora, p_hora_registro;
         public bool p_tubo_repetido=false;
         public char[] p_permitidas_tubo_placa = { '-', '0','1', '2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
-
+        public string version_app = "2.0.0.2";
         public frmPrincipal()
         {
             InitializeComponent();
@@ -34,22 +33,6 @@ namespace Registro_Tuberia_SADS
 
         #region funciones para API REST con la db del SADS
         //funcion parar mandar las consultas a la API echa en php en el servidor o host
-       /* public string GetApiData(string url)
-        {
-            string responseString = "";
-            try
-            {
-                var response = cliente.GetStringAsync(url);
-                responseString = response.Result;
-
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show("error_conexion: "+err.Message);
-
-            }
-            return responseString;
-        }*/
 
         public void insertApiData_tubo(string url,string id_tubo)
         {
@@ -73,28 +56,8 @@ namespace Registro_Tuberia_SADS
             hora_db = hora_db_dt.ToString("yyyy-MM-dd HH:mm:ss");
             try
             {
-                var values = new Dictionary<string, string>
-                {
-                    { "T_id_tubo", id_tubo },
-                    { "T_no_tubo", txbNoTubo.Text },
-                    { "T_no_placa", txbNoPlaca.Text },
-                    { "T_ID_proyecto", lblIDproyecto.Text},
-                    { "T_lote_alambre", txbLoteAlam.Text },
-                    { "T_lote_fundente", txbLoteFund.Text },
-                    { "T_maquina", lblMaquina.Text },
-                    { "T_foliooperador", txbFolio.Text },
-                    { "T_fecha", fecha_envio},
-                    { "T_hora", hora_envio },
-                    { "T_hora_db", hora_db},
-                    { "Archivos_excel", ""},
-                    { "T_observaciones",txbObservaciones.Text }
 
-                };
-
-                //var content = new FormUrlEncodedContent(values);
-                //var response = cliente.PostAsync(url, content);
-
-                var cultureInfo = new CultureInfo("de-DE");
+                var cultureInfo = new CultureInfo("es-MX");
                 var datos_de_envio = new Tabla_exin
                 {
                     T_ID_tubo = id_tubo,
@@ -107,7 +70,7 @@ namespace Registro_Tuberia_SADS
                     T_FolioOperador = txbFolio.Text,
                     T_Fecha = fecha_envio,
                     T_Hora = hora_envio,
-                    T_Hora_db = DateTime.ParseExact(hora_db, "yyyy-MM-dd HH:mm:ss", cultureInfo),
+                    T_Hora_db =hora_db,
                     T_Archivos_excel = "",
                     T_Observaciones = txbObservaciones.Text
                 };
@@ -219,55 +182,57 @@ namespace Registro_Tuberia_SADS
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
+        private void PnlTitulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
         void Orientacion_vertical()
         {
             //pestañas 
+            LblVersion.Location = new Point(430, 26);
+            lblTituloTuberia.Location = new Point(100, 3);
             this.Width = 600;
             this.StartPosition = FormStartPosition.WindowsDefaultLocation;
             tbcPrincipal.Width = 590;
             tbcPrincipal.Location = new Point(6, 2);
-            //pestaña Operador
+            //-------Pestaña Operador
             lblFolio.Location = new Point(2, 30);
             txbFolio.Location = new Point(100, 30);
             btnIngresar.Location = new Point(265, 21);
             btnSalirOperador.Location = new Point(425, 21);
             gpbIngresar.Width = 530;
-            btnAjustes.Location = new Point(420, 105);
-            btnActivarEdicion.Location = new Point(485, 105);
-            btnCerrar2.Location = new Point(475, 6);
-            btnMinimizar2.Location = new Point(405, 6);
+            btnAjustes.Location = new Point(420, 50);
+            btnActivarEdicion.Location = new Point(485, 50);
             lblIDp.Location = new Point(9, 390);
             lblIDproyecto.Location = new Point(169, 390);
-            Font fuente = new Font(lblTituloOperador.Font.FontFamily, 24);
-            lblTituloOperador.Font = fuente;
-            //pestaña tuberia
-            btnCerrar.Location = new Point(475, 6);
-            btnMinimizar.Location = new Point(405, 6);
-            lblTituloTuberia.Font = fuente;
+            //--------------Pestaña tuberia
+            lblNombreProyecto.Width = 520;
             btnDatosTuberia.Location = new Point(475, 250);
-            lblHora.Location = new Point(380, 49);
-            txbHora.Location = new Point(412, 49);
-            lblEalambre.Location = new Point(5, 226);
-            lblTipoalambre.Location = new Point(130, 226);
-            lblEfundente.Location = new Point(5, 251);
-            lblTipoFundente.Location = new Point(130, 251);
-            lblEmaquina.Location = new Point(5, 201);
-            lblMaquina.Location = new Point(105, 201);
-            lblEdiametro.Location = new Point(285, 172);
-            lblDiametro.Location = new Point(411, 172);
-            lblEwps.Location = new Point(5, 278);
-            lblWps.Location = new Point(85, 278);
-            gpbDatossoldadura.Location = new Point(6, 305);
+            lblHora.Location = new Point(200, 3);
+            lblEalambre.Location = new Point(6, 156);
+            lblTipoalambre.Location = new Point(126, 156);
+            lblTipoalambre.Width = 500;
+            lblEfundente.Location = new Point(6,185);
+            lblTipoFundente.Location = new Point(126, 185);
+            lblTipoFundente.Width = 500;
+            lblEmaquina.Location = new Point(6, 214);
+            lblMaquina.Location = new Point(106, 214);
+            lblEdiametro.Location = new Point(6, 243);
+            lblDiametro.Location = new Point(106, 243);
+            lblEwps.Location = new Point(6, 272);
+            lblWps.Location = new Point(106, 272);
+            gpbDatossoldadura.Location = new Point(6, 290);
             gpbDatossoldadura.Width = 540;
-            gpbDatossoldadura.Height = 280;
-            txbObservaciones.Width = 235;
-            txbObservaciones.Location = new Point(156, 200);
-            lblEobservaciones.Location = new Point(7, 197);
+            gpbDatossoldadura.Height = 255;
+            txbObservaciones.Width = 270;
+            txbObservaciones.Height = 58;
+            txbObservaciones.Location = new Point(156, 193);
+            lblEobservaciones.Location = new Point(7, 193);
             lblEobservaciones.Text = "Obs. :";
-            btnGuardar.Location = new Point(390, 120);
+            btnGuardar.Location = new Point(393, 100);
             btnGuardar.Height = 75;
-            btnGuardar.Width = 138;
+            btnGuardar.Width = 130;
             btnGuardar.ImageAlign = ContentAlignment.TopCenter;
             btnGuardar.TextAlign = ContentAlignment.BottomCenter;
 
@@ -275,46 +240,43 @@ namespace Registro_Tuberia_SADS
 
         void Orientacion_horizontal()
         {
-            //pestañas 
+            //pestañas
+            LblVersion.Location = new Point(455, 26);
+            lblTituloTuberia.Location = new Point(110, 3);
             this.Width = 720;
             this.StartPosition = FormStartPosition.CenterScreen;
             tbcPrincipal.Width = 710;
             tbcPrincipal.Location = new Point(10, 2);
-            //pestaña Operador
+            //----------Pestaña Operador
             lblFolio.Location = new Point(19, 30);
             txbFolio.Location = new Point(136, 30);
             btnIngresar.Location = new Point(311, 21);
             btnSalirOperador.Location = new Point(470, 21);
             gpbIngresar.Width = 588;
-            btnAjustes.Location = new Point(470, 105);
-            btnActivarEdicion.Location = new Point(534, 105);
-            btnCerrar2.Location = new Point(588, 6);
-            btnMinimizar2.Location = new Point(512, 6);
-            lblIDp.Location = new Point(9, 348);
-            lblIDproyecto.Location = new Point(169, 348);
-            Font fuente = new Font(lblTituloOperador.Font.FontFamily, 26);
-            lblTituloOperador.Font = fuente;
-            //lblTituloOperador.Font = new System.Drawing.Font(lblTituloOperador.Font, FontStyle.Bold);
-            //pestaña tuberia
-            btnCerrar.Location = new Point(588, 6);
-            btnMinimizar.Location = new Point(512, 6);
-            lblTituloTuberia.Font = fuente;
-            btnDatosTuberia.Location = new Point(622, 175);
-            lblHora.Location = new Point(440, 49);
-            txbHora.Location = new Point(472, 49);
-            lblEalambre.Location = new Point(371, 85);
-            lblTipoalambre.Location = new Point(499, 85);
-            lblEfundente.Location = new Point(371, 114);
-            lblTipoFundente.Location = new Point(499, 114);
-            lblEmaquina.Location = new Point(371, 146);
-            lblMaquina.Location = new Point(499, 146);
-            lblEdiametro.Location = new Point(371, 175);
-            lblDiametro.Location = new Point(499, 175);
-            lblEwps.Location = new Point(5, 197);
-            lblWps.Location = new Point(85, 197);
-            gpbDatossoldadura.Location = new Point(6, 217);
+            btnAjustes.Location = new Point(470, 43);
+            btnActivarEdicion.Location = new Point(534, 43);
+            lblIDp.Location = new Point(9, 286);
+            lblIDproyecto.Location = new Point(169, 286);
+            //------- Pestaña tuberia
+            lblNombreProyecto.Width = 260;
+            btnDatosTuberia.Location = new Point(622, 113);
+            lblHora.Location = new Point(279, 5);
+            lblEalambre.Location = new Point(372, 40);
+            lblTipoalambre.Location = new Point(500, 40);
+            lblTipoalambre.Width = 167;
+            lblEfundente.Location = new Point(372, 69);
+            lblTipoFundente.Location = new Point(500, 69);
+            lblTipoFundente.Width = 167;
+            lblEmaquina.Location = new Point(372, 98);
+            lblMaquina.Location = new Point(500, 98);
+            lblEdiametro.Location = new Point(372, 127);
+            lblDiametro.Location = new Point(500, 127);
+            lblEwps.Location = new Point(6, 152);
+            lblWps.Location = new Point(86, 152);
+            gpbDatossoldadura.Location = new Point(7, 172);
             gpbDatossoldadura.Width = 660;
             txbObservaciones.Width = 259;
+            txbObservaciones.Height = 75;
             txbObservaciones.Location = new Point(395, 58);
             lblEobservaciones.Location = new Point(392, 24);
             lblEobservaciones.Text = "Observaciones:";
@@ -342,7 +304,7 @@ namespace Registro_Tuberia_SADS
             lblMaquina.Text = Properties.Settings.Default.Gmaquina;
             lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
             string orientacion = Properties.Settings.Default.Gfrmp_orientacion;
-
+            LblVersion.Text = version_app;
             Cargar_datos_proyectos();
             btnGuardar.Enabled = false;
             this.Height = 300;
@@ -592,18 +554,19 @@ namespace Registro_Tuberia_SADS
 
         }
 
-        private void btnCerrar2_Click(object sender, EventArgs e)
+        /*private void btnCerrar2_Click(object sender, EventArgs e)
         {
             cerrar_botones();
-        }
+        }*/
         private void button1_Click(object sender, EventArgs e)
         {
-
-            var output = Consultas.Get_API("http://10.10.20.15/api/rq_tOperadores.php?id=" + txbFolio.Text);
+            string folio = txbFolio.Text;
+            string url_api_operador = @"http://10.10.20.15/backend/api/ar_tOperadores.php?Op_Folio=";
+            var output = Consultas.Get_API(url_api_operador + folio);
 
             List<operadores_tabla> results = JsonConvert.DeserializeObject<List<operadores_tabla>>(output);
 
-            if ((output != "[]") && (txbFolio.Text != ""))
+            if ((output != "null") && (folio != ""))
             {
                 foreach (var r in results)
                 {
@@ -692,14 +655,16 @@ namespace Registro_Tuberia_SADS
                             "Tipo de alambre: " + lblTipoalambre.Text + "\n" +
                             "Tipo de fundente: " + lblTipoFundente.Text + "\n" +
                             "Maquina: " + lblMaquina.Text + "\n" +
-                            "WPS: " + lblWps.Text);
+                            "WPS: " + lblWps.Text + "\n" +
+                            "version app: " + version_app + "\n"
+                            );
         }
 
 
-        private void btnMinimizar2_Click(object sender, EventArgs e)
+       /* private void btnMinimizar2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
+        }*/
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -731,6 +696,11 @@ namespace Registro_Tuberia_SADS
         #endregion
 
         #region funciones no usadas y que si borro no sirve formulario
+        private void btnAPIs_Click(object sender, EventArgs e)
+        {
+            frmAPIs frm = new frmAPIs();
+            frm.ShowDialog();
+        }
         private void frmPrincipal_Validated(object sender, EventArgs e)
         {
             
@@ -780,11 +750,12 @@ namespace Registro_Tuberia_SADS
             
         }
 
-        private void btnAPIs_Click(object sender, EventArgs e)
+        private void lblHora_Click(object sender, EventArgs e)
         {
-            frmAPIs frm = new frmAPIs();
-            frm.ShowDialog();
+
         }
+
+       
 
         private void tbcPrincipal_Enter(object sender, EventArgs e)
         {

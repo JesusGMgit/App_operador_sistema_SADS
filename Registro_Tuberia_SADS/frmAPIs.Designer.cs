@@ -62,19 +62,32 @@
             this.txbFolioOperador = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblRespuesta = new System.Windows.Forms.Label();
             this.btnJSON = new System.Windows.Forms.Button();
             this.lblJSON = new System.Windows.Forms.Label();
             this.btnConvertir = new System.Windows.Forms.Button();
-            this.lblRespuesta = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnConsultaTubo = new System.Windows.Forms.Button();
-            this.txbIDtubo = new System.Windows.Forms.TextBox();
             this.lblDatosTubo = new System.Windows.Forms.Label();
+            this.txbIDtubo = new System.Windows.Forms.TextBox();
+            this.btnConsultaTubo = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txbFechaaP3 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cmbMaquina = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DgvTablatuberia = new System.Windows.Forms.DataGridView();
+            this.btnAsignarfechadb = new System.Windows.Forms.Button();
+            this.btnModificarUno = new System.Windows.Forms.Button();
+            this.txbTuboModificar = new System.Windows.Forms.TextBox();
             this.tbcTablas.SuspendLayout();
             this.tbpProyecto.SuspendLayout();
             this.tbpOperadores.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTablatuberia)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcTablas
@@ -83,6 +96,7 @@
             this.tbcTablas.Controls.Add(this.tbpOperadores);
             this.tbcTablas.Controls.Add(this.tabPage1);
             this.tbcTablas.Controls.Add(this.tabPage2);
+            this.tbcTablas.Controls.Add(this.tabPage3);
             this.tbcTablas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcTablas.Location = new System.Drawing.Point(0, 0);
             this.tbcTablas.Margin = new System.Windows.Forms.Padding(4);
@@ -425,6 +439,16 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblRespuesta
+            // 
+            this.lblRespuesta.AutoSize = true;
+            this.lblRespuesta.Location = new System.Drawing.Point(56, 200);
+            this.lblRespuesta.Name = "lblRespuesta";
+            this.lblRespuesta.Size = new System.Drawing.Size(46, 18);
+            this.lblRespuesta.TabIndex = 20;
+            this.lblRespuesta.Text = "label2";
+            this.lblRespuesta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnJSON
             // 
             this.btnJSON.Location = new System.Drawing.Point(24, 47);
@@ -455,18 +479,9 @@
             this.btnConvertir.UseVisualStyleBackColor = true;
             this.btnConvertir.Click += new System.EventHandler(this.btnConvertir_Click);
             // 
-            // lblRespuesta
-            // 
-            this.lblRespuesta.AutoSize = true;
-            this.lblRespuesta.Location = new System.Drawing.Point(56, 200);
-            this.lblRespuesta.Name = "lblRespuesta";
-            this.lblRespuesta.Size = new System.Drawing.Size(46, 18);
-            this.lblRespuesta.TabIndex = 20;
-            this.lblRespuesta.Text = "label2";
-            this.lblRespuesta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.lblDatosTubo);
             this.tabPage2.Controls.Add(this.txbIDtubo);
             this.tabPage2.Controls.Add(this.btnConsultaTubo);
@@ -478,23 +493,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnConsultaTubo
-            // 
-            this.btnConsultaTubo.Location = new System.Drawing.Point(57, 129);
-            this.btnConsultaTubo.Name = "btnConsultaTubo";
-            this.btnConsultaTubo.Size = new System.Drawing.Size(192, 72);
-            this.btnConsultaTubo.TabIndex = 0;
-            this.btnConsultaTubo.Text = "button2";
-            this.btnConsultaTubo.UseVisualStyleBackColor = true;
-            this.btnConsultaTubo.Click += new System.EventHandler(this.btnConsultaTubo_Click);
-            // 
-            // txbIDtubo
-            // 
-            this.txbIDtubo.Location = new System.Drawing.Point(95, 55);
-            this.txbIDtubo.Name = "txbIDtubo";
-            this.txbIDtubo.Size = new System.Drawing.Size(100, 24);
-            this.txbIDtubo.TabIndex = 1;
-            // 
             // lblDatosTubo
             // 
             this.lblDatosTubo.AutoSize = true;
@@ -503,6 +501,129 @@
             this.lblDatosTubo.Size = new System.Drawing.Size(46, 18);
             this.lblDatosTubo.TabIndex = 2;
             this.lblDatosTubo.Text = "label2";
+            // 
+            // txbIDtubo
+            // 
+            this.txbIDtubo.Location = new System.Drawing.Point(187, 66);
+            this.txbIDtubo.Name = "txbIDtubo";
+            this.txbIDtubo.Size = new System.Drawing.Size(100, 24);
+            this.txbIDtubo.TabIndex = 1;
+            // 
+            // btnConsultaTubo
+            // 
+            this.btnConsultaTubo.Location = new System.Drawing.Point(57, 129);
+            this.btnConsultaTubo.Name = "btnConsultaTubo";
+            this.btnConsultaTubo.Size = new System.Drawing.Size(192, 72);
+            this.btnConsultaTubo.TabIndex = 0;
+            this.btnConsultaTubo.Text = "buscar tubo";
+            this.btnConsultaTubo.UseVisualStyleBackColor = true;
+            this.btnConsultaTubo.Click += new System.EventHandler(this.btnConsultaTubo_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "No de tubo";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.txbTuboModificar);
+            this.tabPage3.Controls.Add(this.btnModificarUno);
+            this.tabPage3.Controls.Add(this.btnAsignarfechadb);
+            this.tabPage3.Controls.Add(this.DgvTablatuberia);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.cmbMaquina);
+            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.txbFechaaP3);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 27);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(721, 419);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "FECHA:";
+            // 
+            // txbFechaaP3
+            // 
+            this.txbFechaaP3.Location = new System.Drawing.Point(136, 64);
+            this.txbFechaaP3.Name = "txbFechaaP3";
+            this.txbFechaaP3.Size = new System.Drawing.Size(141, 24);
+            this.txbFechaaP3.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(296, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(156, 33);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "BUSCAR TUBOS";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // cmbMaquina
+            // 
+            this.cmbMaquina.FormattingEnabled = true;
+            this.cmbMaquina.Location = new System.Drawing.Point(136, 20);
+            this.cmbMaquina.Name = "cmbMaquina";
+            this.cmbMaquina.Size = new System.Drawing.Size(141, 26);
+            this.cmbMaquina.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(31, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 18);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "MAQUINA:";
+            // 
+            // DgvTablatuberia
+            // 
+            this.DgvTablatuberia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvTablatuberia.Location = new System.Drawing.Point(8, 88);
+            this.DgvTablatuberia.Name = "DgvTablatuberia";
+            this.DgvTablatuberia.Size = new System.Drawing.Size(678, 174);
+            this.DgvTablatuberia.TabIndex = 5;
+            // 
+            // btnAsignarfechadb
+            // 
+            this.btnAsignarfechadb.Location = new System.Drawing.Point(71, 319);
+            this.btnAsignarfechadb.Name = "btnAsignarfechadb";
+            this.btnAsignarfechadb.Size = new System.Drawing.Size(156, 33);
+            this.btnAsignarfechadb.TabIndex = 6;
+            this.btnAsignarfechadb.Text = "MODIFICAR TODOS";
+            this.btnAsignarfechadb.UseVisualStyleBackColor = true;
+            this.btnAsignarfechadb.Click += new System.EventHandler(this.btnAsignarfechadb_Click);
+            // 
+            // btnModificarUno
+            // 
+            this.btnModificarUno.Location = new System.Drawing.Point(484, 342);
+            this.btnModificarUno.Name = "btnModificarUno";
+            this.btnModificarUno.Size = new System.Drawing.Size(156, 33);
+            this.btnModificarUno.TabIndex = 7;
+            this.btnModificarUno.Text = "MODIFICAR UNO";
+            this.btnModificarUno.UseVisualStyleBackColor = true;
+            this.btnModificarUno.Click += new System.EventHandler(this.btnModificarUno_Click);
+            // 
+            // txbTuboModificar
+            // 
+            this.txbTuboModificar.Location = new System.Drawing.Point(484, 302);
+            this.txbTuboModificar.Name = "txbTuboModificar";
+            this.txbTuboModificar.Size = new System.Drawing.Size(141, 24);
+            this.txbTuboModificar.TabIndex = 8;
             // 
             // frmAPIs
             // 
@@ -514,6 +635,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAPIs";
             this.Text = "frmAPIs";
+            this.Load += new System.EventHandler(this.frmAPIs_Load);
             this.tbcTablas.ResumeLayout(false);
             this.tbpProyecto.ResumeLayout(false);
             this.tbpProyecto.PerformLayout();
@@ -523,6 +645,9 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTablatuberia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,5 +696,16 @@
         private System.Windows.Forms.TextBox txbIDtubo;
         private System.Windows.Forms.Button btnConsultaTubo;
         private System.Windows.Forms.Label lblDatosTubo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbMaquina;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txbFechaaP3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView DgvTablatuberia;
+        private System.Windows.Forms.Button btnAsignarfechadb;
+        private System.Windows.Forms.Button btnModificarUno;
+        private System.Windows.Forms.TextBox txbTuboModificar;
     }
 }

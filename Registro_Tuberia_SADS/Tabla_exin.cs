@@ -30,7 +30,7 @@ namespace Registro_Tuberia_SADS
         [JsonProperty("T_Hora")]
         public string T_Hora { get; set; }
         [JsonProperty("T_Hora_db")]
-        public DateTime T_Hora_db { get; set; }
+        public string T_Hora_db { get; set; }
         [JsonProperty("T_Archivos_excel")]
         public string T_Archivos_excel { get; set; }
         [JsonProperty("T_Reporte_excel")]

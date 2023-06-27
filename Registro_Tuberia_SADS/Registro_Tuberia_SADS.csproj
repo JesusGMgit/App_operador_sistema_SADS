@@ -29,8 +29,8 @@
     <PublisherName>JGM</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -44,6 +44,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -81,7 +83,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -194,6 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bartkowalski-1960-Matchbox-Cars-Pipe-Truck.ico" />
+    <None Include="Resources\window_minimize_icon_195498.ico" />
+    <None Include="Resources\math_times_icon_195340.ico" />
+    <None Include="Resources\53c0f4b59f0df-db9-to-rj45.gif" />
+    <None Include="Resources\1904654-cancel-close-cross-delete-reject-remove-stop_122504.ico" />
+    <None Include="Resources\1904666-calculate-close-delete-hide-minimize-minus-remove_122516%281%29.ico" />
+    <None Include="Resources\1904666-calculate-close-delete-hide-minimize-minus-remove_122516.ico" />
     <None Include="Resources\business_help_support_service_customer_icon_231900.png" />
     <None Include="Resources\rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920%282%29.png" />
     <None Include="Resources\rating_feedback_review_checklist_rate_questionnaire_survey_icon_231920%281%29.png" />
