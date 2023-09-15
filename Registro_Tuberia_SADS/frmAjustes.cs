@@ -15,26 +15,7 @@ namespace Registro_Tuberia_SADS
 {
     public partial class frmAjustes : Form
     {
-        //Variable para las solicitudes o consultas a al servidor 
-        private static readonly HttpClient cliente_ajustes = new HttpClient();
-        
-        //funcion parar mandar las consultas a la API echa en php en el servidor o host
-        public string GetApiData(string url)
-        {
-            string responseString = "";
-            try
-            {
-                var response = cliente_ajustes.GetStringAsync(url);
-                responseString = response.Result;
-
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-
-            }
-            return responseString;
-        }
+      
         public frmAjustes()
         {
             InitializeComponent();
@@ -102,10 +83,10 @@ namespace Registro_Tuberia_SADS
             cmbFormatoHora.Text = Properties.Settings.Default.Gformato_hora;
             try
             {
-                
 
-                var output = GetApiData("http://10.10.20.15/backend/api/ar_tProyectos.php");
 
+              
+                var output = Consultas.Get_API("http://10.10.20.15/backend/api/ar_tProyectos.php");
                 //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
                 List<proyectos_tabla> results = JsonConvert.DeserializeObject<List<proyectos_tabla>>(output);
 

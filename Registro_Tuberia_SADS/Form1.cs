@@ -26,6 +26,7 @@ namespace Registro_Tuberia_SADS
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
         public string version_app = "2.0.0.2";
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -401,6 +402,7 @@ namespace Registro_Tuberia_SADS
 
         #endregion
 
+        #region cuadro de texto
         private void txbNoPlaca_KeyPress(object sender, KeyPressEventArgs e)
         {
             //agregar pra solo letras y numeros
@@ -441,6 +443,22 @@ namespace Registro_Tuberia_SADS
             }
         }
 
+        #endregion
+
+        #region formuralio y tick del reloj
+
+        private void tmrFechaHora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            p_hora_registro = DateTime.Now.ToString("hh:mm:ss tt");
+            if (p_formato_hora == "24horas")
+            {
+                lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            }
+
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             Iniciar_formulario();
@@ -448,19 +466,7 @@ namespace Registro_Tuberia_SADS
             //<a href="https://www.flaticon.com/free-icons/cross" title="cross icons">Cross icons created by Freepik - Flaticon</a>
         }
 
-        private void tmrFechaHora_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
-            p_hora_registro= DateTime.Now.ToString("hh:mm:ss tt");
-            if (p_formato_hora=="24horas")
-            {
-                lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
-            }
-            
-            lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-        }
-
-        
+              
         private void frmPrincipal_Activated(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.Gcp == true)
@@ -490,9 +496,10 @@ namespace Registro_Tuberia_SADS
         {
             Properties.Settings.Default.Gmaquina = lblMaquina.Text;
         }
+        #endregion
 
         //_________________________________________________________________
-        #region funciones de lso botones
+        #region funciones de los botones
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             cerrar_botones();
@@ -695,7 +702,7 @@ namespace Registro_Tuberia_SADS
         }
         #endregion
 
-        #region funciones no usadas y que si borro no sirve formulario
+        #region funciones no usadas y que si borro no sirve el formulario
         private void btnAPIs_Click(object sender, EventArgs e)
         {
             frmAPIs frm = new frmAPIs();
@@ -711,8 +718,6 @@ namespace Registro_Tuberia_SADS
             
         }
 
-        
-
         private void lblNombreProyecto_Click(object sender, EventArgs e)
         {
 
@@ -722,8 +727,6 @@ namespace Registro_Tuberia_SADS
         {
 
         }
-
-        
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -773,9 +776,6 @@ namespace Registro_Tuberia_SADS
 
         }
         #endregion
-
-       
-
 
 
     }
