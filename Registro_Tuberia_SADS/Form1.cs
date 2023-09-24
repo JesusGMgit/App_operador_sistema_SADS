@@ -21,11 +21,14 @@ namespace Registro_Tuberia_SADS
         public static  new string ProductVersion { get; }
         public int var_temporal;
         public string p_fecha_guardar, path_archivo_txt,p_formato_hora, p_hora_registro;
+        public string p_ruta_archivo_respaldo;
         public bool p_tubo_repetido=false;
+        public int p_numero_registros_actual;
+        public long p_numero_archivo_respaldo;
         public char[] p_permitidas_tubo_placa = { '-', '0','1', '2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
-        public string version_app = "2.0.0.2";
+        public string version_app = "2.0.1.0";
 
         public frmPrincipal()
         {
@@ -104,7 +107,7 @@ namespace Registro_Tuberia_SADS
         //Si la conexion falla el respaldo guarda los datos del tubo
         public void archivo_txt_respaldo()
         {
-            string fecha_envio_txt,hora_envio_txt;
+            string fecha_envio_txt,hora_envio_txt,version_archivo ="";
             p_fecha_guardar = DateTime.Now.ToString("dd/MM/yyyy");
             if ((txbHora.Enabled == true) && (txbFecha.Enabled == true))
             {
@@ -132,21 +135,30 @@ namespace Registro_Tuberia_SADS
                                   fecha_envio_txt + "," +
                                   hora_envio_txt + "," +
                                   txbObservaciones.Text;
-               
-            path_archivo_txt = @"C:\\Users\\Public\\Respaldo_registro_Maquina_" + lblMaquina.Text + "_v2.txt";
 
+            //path_archivo_txt = @"C:\\Users\\Public\\Respaldo_registro_Maquina_" + lblMaquina.Text + "_v2.txt";
+
+            version_archivo = $"_v2-{p_numero_archivo_respaldo.ToString()}.txt";
+            //para no crear archivos taaaan grandes de registros se crean archvivos de solo 500 registros
+
+            if (p_numero_registros_actual > 500)
+            {
+                p_numero_archivo_respaldo += 1;
+                version_archivo = $"_v2-{p_numero_archivo_respaldo.ToString()}.txt";
+                p_numero_registros_actual = 0;
+                
+            }
+
+            //ruta donde guardaran los archivos de respaldo
+            path_archivo_txt = p_ruta_archivo_respaldo + "\\Respaldo_registro_Maquina_" + lblMaquina.Text + version_archivo;
+        
             if (!File.Exists(path_archivo_txt))
             {
-                // Create a file to write to.
-                using (StreamWriter c_archivo = File.CreateText(path_archivo_txt))
-                {
-                    c_archivo.WriteLine(linea_encabezado);
-                    c_archivo.WriteLine(linea_registro);
-                    c_archivo.Close();
-                }
+                crear_archivo_txt(linea_encabezado, linea_registro, path_archivo_txt);
             }
             else
             {
+                
                 using (StreamWriter e_archivo = new StreamWriter(path_archivo_txt, true))
                 {
                     e_archivo.WriteLine(linea_registro); //se agrega información al documento
@@ -154,8 +166,21 @@ namespace Registro_Tuberia_SADS
                     e_archivo.Close();
                 }
             }
+            p_numero_registros_actual += 1;
+            
         }
 
+        void crear_archivo_txt(string linea1, string linea2, string ruta_archivo)
+        {
+            // Create a file to write to.
+            using (StreamWriter c_archivo = File.CreateText(ruta_archivo))
+            {
+                c_archivo.WriteLine(linea1);
+                c_archivo.WriteLine(linea2);
+                c_archivo.Close();
+            }
+
+        }
 
         #endregion
 
@@ -300,11 +325,17 @@ namespace Registro_Tuberia_SADS
 
         void Iniciar_formulario()
         {
+            //cargar variables de la app  guardadas la sesion pasada
             p_formato_hora = Properties.Settings.Default.Gformato_hora;
             tmrFechaHora.Enabled = true;
             lblMaquina.Text = Properties.Settings.Default.Gmaquina;
             lblNombreProyecto.Text = Properties.Settings.Default.Gproyecto;
             string orientacion = Properties.Settings.Default.Gfrmp_orientacion;
+            p_numero_registros_actual = Properties.Settings.Default.Gnumero_registros_respaldo;
+            p_numero_archivo_respaldo = Properties.Settings.Default.Gnumero_archivo_respaldo;
+            p_ruta_archivo_respaldo = Properties.Settings.Default.Gpath_archivotexto;
+            if(p_ruta_archivo_respaldo == "")
+                p_ruta_archivo_respaldo = "C:\\Users\\Public";
             LblVersion.Text = version_app;
             Cargar_datos_proyectos();
             btnGuardar.Enabled = false;
@@ -395,6 +426,9 @@ namespace Registro_Tuberia_SADS
                 Properties.Settings.Default.Gproyecto = lblIDproyecto.Text+"-"+ lblNombreProyecto.Text;
                 Properties.Settings.Default.Gordentrabajo = lblIDproyecto.Text + "-" + lblOrdentrabajo.Text;
                 Properties.Settings.Default.Gformato_hora = p_formato_hora;
+                Properties.Settings.Default.Gpath_archivotexto = p_ruta_archivo_respaldo;
+                Properties.Settings.Default.Gnumero_registros_respaldo = p_numero_registros_actual;
+                Properties.Settings.Default.Gnumero_archivo_respaldo = p_numero_archivo_respaldo;
                 Properties.Settings.Default.Save();
                 this.Close();
             }
@@ -488,13 +522,17 @@ namespace Registro_Tuberia_SADS
                 lblMaquina.Text = Properties.Settings.Default.Gmaquina;
                 p_formato_hora = Properties.Settings.Default.Gformato_hora;
                 Properties.Settings.Default.Gcp = false;
+                p_ruta_archivo_respaldo = Properties.Settings.Default.Gpath_archivotexto;
+                if (p_ruta_archivo_respaldo == "")
+                    p_ruta_archivo_respaldo = "C:\\Users\\Public";
+
             }
             
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.Gmaquina = lblMaquina.Text;
+     
         }
         #endregion
 

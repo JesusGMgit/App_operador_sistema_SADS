@@ -30,6 +30,8 @@ namespace Registro_Tuberia_SADS
                 Properties.Settings.Default.Gproyecto = cmbProyecto.Text;
                 Properties.Settings.Default.Gfrmp_orientacion = cmbOrientacion.Text;
                 Properties.Settings.Default.Gformato_hora = cmbFormatoHora.Text;
+                //Properties.Settings.Default.Gpath_archivotexto = cmbRuta.Text;
+                Properties.Settings.Default.Gpath_archivotexto = lblRutaArchivo.Text;
                 MessageBox.Show("Ajustes guardados.");
                 cmbProyecto.Enabled = false;
                 cmbMaquina.Enabled = false;
@@ -77,15 +79,19 @@ namespace Registro_Tuberia_SADS
             cmbFormatoHora.Items.Add("12horas");
             cmbFormatoHora.Items.Add("24horas");
             cmbFormatoHora.Text = "a.m./p.m.";
+            //opciones de ruta de archivo txt de respaldo
+            //cmbRuta.Items.Add(@"C:\\Users\\Public\\Respaldo_registro_Maquina_");
+            //cmbRuta.Items.Add(@"D:\\Respaldo_registro_Maquina_");
             //carga la opcion selecionada anteriormente
             cmbMaquina.Text = Properties.Settings.Default.Gmaquina;
             cmbOrientacion.Text = Properties.Settings.Default.Gfrmp_orientacion;
             cmbFormatoHora.Text = Properties.Settings.Default.Gformato_hora;
+            //cmbRuta.Text = Properties.Settings.Default.Gpath_archivotexto;
+            lblRutaArchivo.Text = Properties.Settings.Default.Gpath_archivotexto;
+            if (lblRutaArchivo.Text == "")
+                lblRutaArchivo.Text = "C:\\Users\\Public";
             try
             {
-
-
-              
                 var output = Consultas.Get_API("http://10.10.20.15/backend/api/ar_tProyectos.php");
                 //operadores_tabla myobj = JsonConvert.DeserializeObject<operadores_tabla>(output.Substring(1, output.Length - 2));
                 List<proyectos_tabla> results = JsonConvert.DeserializeObject<List<proyectos_tabla>>(output);
@@ -120,6 +126,17 @@ namespace Registro_Tuberia_SADS
 
         private void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnBuscarCarpeta_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                // shows the path to the selected folder in the folder dialog
+                MessageBox.Show(fbd.SelectedPath);
+            //cmbRuta.Items.Add(fbd.SelectedPath);
+            lblRutaArchivo.Text = fbd.SelectedPath;
 
         }
     }
