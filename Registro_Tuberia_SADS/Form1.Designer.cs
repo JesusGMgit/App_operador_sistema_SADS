@@ -112,7 +112,6 @@
             this.tbcPrincipal.SelectedIndex = 0;
             this.tbcPrincipal.Size = new System.Drawing.Size(720, 419);
             this.tbcPrincipal.TabIndex = 0;
-            this.tbcPrincipal.Enter += new System.EventHandler(this.tbcPrincipal_Enter);
             this.tbcPrincipal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbcPrincipal_MouseMove);
             // 
             // tbpOperador
@@ -135,8 +134,6 @@
             this.tbpOperador.Size = new System.Drawing.Size(682, 411);
             this.tbpOperador.TabIndex = 1;
             this.tbpOperador.Text = "OPERADOR";
-            this.tbpOperador.Click += new System.EventHandler(this.tbpOperador_Click);
-            this.tbpOperador.Enter += new System.EventHandler(this.tbpOperador_Enter);
             this.tbpOperador.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbpOperador_MouseMove);
             // 
             // btnAPIs
@@ -150,7 +147,6 @@
             this.btnAPIs.TabIndex = 104;
             this.btnAPIs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAPIs.UseVisualStyleBackColor = true;
-            this.btnAPIs.Visible = false;
             this.btnAPIs.Click += new System.EventHandler(this.btnAPIs_Click);
             // 
             // btnActivarEdicion
@@ -263,7 +259,6 @@
             this.txbFolio.Name = "txbFolio";
             this.txbFolio.Size = new System.Drawing.Size(120, 31);
             this.txbFolio.TabIndex = 1;
-            this.txbFolio.TextChanged += new System.EventHandler(this.txbFolio_TextChanged);
             this.txbFolio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbFolio_KeyPress);
             // 
             // btnSalirOperador
@@ -336,7 +331,6 @@
             this.tbpTuberia.Size = new System.Drawing.Size(682, 411);
             this.tbpTuberia.TabIndex = 0;
             this.tbpTuberia.Text = "TUBERIA";
-            this.tbpTuberia.Click += new System.EventHandler(this.tbpTuberia_Click);
             this.tbpTuberia.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbpTuberia_MouseMove);
             // 
             // lblDiametro
@@ -518,7 +512,6 @@
             this.lblHora.Size = new System.Drawing.Size(102, 25);
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "hh:mm tt";
-            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // gpbDatossoldadura
             // 
@@ -568,7 +561,6 @@
             this.txbNoTubo.Size = new System.Drawing.Size(218, 38);
             this.txbNoTubo.TabIndex = 104;
             this.txbNoTubo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbNoTubo.TextChanged += new System.EventHandler(this.txbNoTubo_TextChanged);
             this.txbNoTubo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbNoTubo_KeyPress);
             // 
             // txbNoPlaca
@@ -580,8 +572,6 @@
             this.txbNoPlaca.Size = new System.Drawing.Size(218, 38);
             this.txbNoPlaca.TabIndex = 103;
             this.txbNoPlaca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbNoPlaca.TextChanged += new System.EventHandler(this.txbNoPlaca_TextChanged);
-            this.txbNoPlaca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbNoPlaca_KeyPress);
             // 
             // label3
             // 
@@ -612,7 +602,6 @@
             this.label2.Size = new System.Drawing.Size(140, 31);
             this.label2.TabIndex = 3;
             this.label2.Text = "No. Placa:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label10
             // 
@@ -675,7 +664,6 @@
             this.lblNombreProyecto.Size = new System.Drawing.Size(260, 25);
             this.lblNombreProyecto.TabIndex = 10;
             this.lblNombreProyecto.Text = "xxxxxxxx";
-            this.lblNombreProyecto.Click += new System.EventHandler(this.lblNombreProyecto_Click);
             // 
             // lblFecha
             // 
@@ -802,8 +790,6 @@
             this.Activated += new System.EventHandler(this.frmPrincipal_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
-            this.Enter += new System.EventHandler(this.frmPrincipal_Enter);
-            this.Validated += new System.EventHandler(this.frmPrincipal_Validated);
             this.tbcPrincipal.ResumeLayout(false);
             this.tbpOperador.ResumeLayout(false);
             this.tbpOperador.PerformLayout();

@@ -28,7 +28,7 @@ namespace Registro_Tuberia_SADS
         public char[] p_permitidas_tubo_placa = { '-', '0','1', '2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         public char[] p_permitidas_lote_alambre = { '/','-', '0', '1','2', '3', '4', '5', '6', '7', '8', '9', (char)Keys.Back };
         //Directory.GetCurrentDirectory() @"C:\"
-        public string version_app = "2.0.1.0";
+        public string version_app = "2.0.1.1";
 
         public frmPrincipal()
         {
@@ -743,76 +743,17 @@ namespace Registro_Tuberia_SADS
         #region funciones no usadas y que si borro no sirve el formulario
         private void btnAPIs_Click(object sender, EventArgs e)
         {
-            frmAPIs frm = new frmAPIs();
-            frm.ShowDialog();
-        }
-        private void frmPrincipal_Validated(object sender, EventArgs e)
-        {
+           
             
         }
 
-        private void frmPrincipal_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void lblNombreProyecto_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbFolio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void tbpOperador_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void tbpTuberia_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txbNoPlaca_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbpOperador_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
-        private void tbcPrincipal_Enter(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbNoTubo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         #endregion
 
 
